@@ -1,0 +1,29 @@
+.navbar {
+    height: 150px;
+    background: url('https://res.cloudinary.com/dyxe4g62g/image/upload/v1625765574/images/albums/MS4/navbar-background_l1eme9.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navbar-brand {
+    font-size: 50px;
+    color: greenyellow !important;
+}
+
+.subtext-logo {
+    font-size: 35px;
+}
+
+.navbar-nav li {
+    font-size: 35px;
+    
+}
+
+.navbar-nav>li>a {
+    color: greenyellow !important;
+}
+
+.html {
+    background: black;
+}
