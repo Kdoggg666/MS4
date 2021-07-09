@@ -1,14 +1,32 @@
+/*-- Google Fonts --*/
+@import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
+
+html {
+    background: url(https://www.popsci.com/uploads/2019/03/18/MAWBLTWLVA5IIBN34YJYSH2L5A.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;    
+    -o-background-size: cover;      
+    background-size: cover;         
+}
+
+header {
+    padding: 0 !important;
+}
+
+/*-- Navbar --*/
 .navbar {
     height: 150px;
-    background: url('https://res.cloudinary.com/dyxe4g62g/image/upload/v1625765574/images/albums/MS4/navbar-background_l1eme9.jpg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: rgba(0, 0, 0, 0.6) !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar-brand {
     font-size: 50px;
     color: greenyellow !important;
+    text-shadow: black 4px 4px;
+    font-family: 'Otomanopee One', sans-serif;
 }
 
 .subtext-logo {
@@ -16,14 +34,16 @@
 }
 
 .navbar-nav li {
-    font-size: 35px;
+    font-size: 25px;
+    font-family: 'Otomanopee One', sans-serif;
     
 }
 
 .navbar-nav>li>a {
     color: greenyellow !important;
+    text-shadow: 2px 2px black;
 }
 
-.html {
-    background: black;
+.navbar-nav>li>a:hover {
+    color: rgba(251, 255, 41, 0.9) !important;
 }
