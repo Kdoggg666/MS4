@@ -2,7 +2,7 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     {% block meta %}
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8">
@@ -15,6 +15,7 @@
     {% block corecss %}
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
       <link rel="stylesheet" href="{% static 'css/base.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" integrity="sha512-SJw7jzjMYJhsEnN/BuxTWXkezA2cRanuB8TdCNMXFJjxG9ZGSKOX5P3j03H6kdMxalKHZ7vlBMB4CagFP/de0A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {% endblock %}
 
     {% block extra_css %}
@@ -30,16 +31,16 @@
     {% endblock %}
 
     <title>GbgZoo {% block extra_title %}{% endblock %}</title>
-  </head>
-  <body>
-      <header class="container-fluid fixed-top">
-        <!-- Navbar with logo center on mobile from https://stackoverflow.com/questions/19733447/bootstrap-navbar-with-left-center-or-right-aligned-items -->
+</head>
+<body class="transparent">
+  <header class="container-fluid">
+    <!-- Navbar with logo center on mobile from https://stackoverflow.com/questions/19733447/bootstrap-navbar-with-left-center-or-right-aligned-items -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark custom-nav-bar">
       <div class="container-fluid">
           <div class="d-flex flex-grow-1">
               <span class="w-100 d-lg-none d-block">
                   <!-- hidden spacer to center brand on mobile --></span>
-              <a class="navbar-brand" href="#">GbgZoo<span class="subtext-logo">.se</span></a>
+              <a class="navbar-brand hvr-grow" href="#">GbgZoo<span class="subtext-logo">.se</span></a>
               <div class="w-100 text-right">
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar7">
                       <span class="navbar-toggler-icon"></span>
@@ -49,10 +50,10 @@
           <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
               <ul class="navbar-nav ms-auto flex-nowrap">
                   <li class="nav-item">
-                      <a href="#" class="nav-link">Home</a>
+                      <a href="#" class="nav-link hvr-grow">Home</a>
                   </li>
                   <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link dropdown-toggle hvr-hang" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Our Selection
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -62,29 +63,24 @@
                       </div>
                   </li>
                   <li class="nav-item">
-                      <a href="#" class="nav-link">Gallery</a>
+                      <a href="#" class="nav-link hvr-grow">Gallery</a>
                   </li>
                   <li class="nav-item">
-                      <a href="#" class="nav-link">My Profile</a>
+                      <a href="#" class="nav-link hvr-grow">My Profile</a>
                   </li>
                   <li class="nav-item">
-                      <a href="#" class="nav-link">Logout</a>
+                      <a href="#" class="nav-link hvr-grow">Logout</a>
                   </li>
               </ul>
           </div>
       </div>
-  </nav>
-      </header>
-      {% if messages %}  
-        <div class="message-container"></div>
-      {% endif %}
+    </nav>
+  </header>
 
-      {% block page_header %}
-      {% endblock %}
+    {% block content %}
+    {% endblock %}
 
-      {% block content %}
-      {% endblock %}
-
+    <footer>This will always appear at the bottom of the page, but <strong>not fixed</strong>.</footer>
 
       {% block postloadjs %}
       {% endblock %}
