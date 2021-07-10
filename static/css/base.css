@@ -84,6 +84,7 @@ header {
 
 /*-- Footer --*/
 footer {
+    height: 150px;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -93,3 +94,13 @@ footer {
     text-align: center;
     color: greenyellow;
   }
+
+footer a i {
+    font-size: 50px;
+    color: white;
+    margin: 0 10px 0 10px;
+}
+
+footer a i:hover {
+    color: rgba(251, 255, 41, 0.9);
+}
