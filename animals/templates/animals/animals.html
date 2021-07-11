@@ -3,14 +3,18 @@
 
 {% block content %}
     <div class="row">
-        <div class="col">
-            <div class="div">
-                {% for animal in animals %}
+        {% for animal in animals %}
+        <div class="col-3">
+            <div class="div text-white text-center">
                 <h1>{{ animal.name }}</h1>
-                {% endfor %}
+                <h2>{{ animal.latin_name }}</h2>
+                <h2>{{ animal.food }}</h2>
+                <h2>{{ animal.temperament }}</h2>
+                <p>{{ animal.description }}</p>
+                <img src="{{ animal.image_url }}" alt="{{ animal.name }}">
             </div>
         </div>
+        {% endfor %}
     </div>
-
-    {% endblock %}
+{% endblock %}
 
