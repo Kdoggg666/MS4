@@ -43,7 +43,7 @@
           <div class="d-flex flex-grow-1">
               <span class="w-100 d-lg-none d-block">
                   <!-- hidden spacer to center brand on mobile --></span>
-              <a class="navbar-brand hvr-grow" href="#">GbgZoo<span class="subtext-logo">.se</span></a>
+              <a class="navbar-brand hvr-grow" href="{% url 'home' %}">GbgZoo<span class="subtext-logo">.se</span></a>
               <div class="w-100 text-right">
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar7">
                       <span class="navbar-toggler-icon"></span>
@@ -53,14 +53,14 @@
           <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
               <ul class="navbar-nav ms-auto flex-nowrap">
                   <li class="nav-item">
-                      <a href="#" class="nav-link hvr-grow">Home</a>
+                      <a href="{% url 'home' %}"" class="nav-link hvr-grow">Home</a>
                   </li>
                   <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle hvr-hang" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Our Selection
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Animals</a>
+                      <a class="dropdown-item" href="{% url 'animals' %}">Animals</a>
                       <a class="dropdown-item" href="#">Care Products</a>
                       <a class="dropdown-item" href="#">Care Guides</a>
                       </div>

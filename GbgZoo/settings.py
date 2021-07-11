@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'home',
+    'home',  #  my custome home app
+    'animals',  # my custom animals app
 ]
 
 MIDDLEWARE = [
