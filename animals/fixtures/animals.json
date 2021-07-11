@@ -11,7 +11,8 @@
     "image": "#",
     "image_url": "https://res.cloudinary.com/dyxe4g62g/image/upload/v1626005649/images/albums/MS4/animals/ball-python_gfiuo0.jpg",
     "temperament": "Docile",
-    "food": "Rodents"
+    "food": "Rodents",
+    "category": 1
 }
 }
 ]
