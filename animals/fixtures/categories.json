@@ -2,22 +2,19 @@
     "pk": 1,
     "model": "animals.category",
     "fields": {
-        "name": "snakes",
-        "friendly_name": "Snakes"
+        "name": "snakes"
     }
 }, {
     "pk": 2,
     "model": "animals.category",
     "fields": {
-        "name": "lizards",
-        "friendly_name": "Lizards"
+        "name": "lizards"
     }
 },{
     "pk": 3,
     "model": "animals.category",
     "fields": {
-        "name": "amphibians",
-        "friendly_name": "Amphibians"
+        "name": "amphibians"
     }
 }
 ]

@@ -19,7 +19,9 @@ class Animal(models.Model):
     """
     Animal class.
     """
-    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey('Category', null=True, blank=True,
+                                 on_delete=models.SET_NULL)
+    animal_id = models.CharField(max_length=30, null=True, blank=True)
     name = models.CharField(max_length=30)
     latin_name = models.CharField(max_length=30)
     climate = models.CharField(max_length=30)
