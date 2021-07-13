@@ -1,17 +1,23 @@
-{% extends base.html %}
+{% extends "base.html" %}
 {% load static %}
 
     {% block content %}
-    <div class="row">
-        <div class="col">
-            <div class="div">
-                {% for animal in animals %}
-                <h1>{{ animal.name }}</h1>
-                {% endfor %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="div text-white text-center">
+                    <h1>{{ animal.name }}</h1>
+                    <h2>Category: {{ animal.category.name }}</h2>
+                    <h2>{{ animal.latin_name }}</h2>
+                    <h2>{{ animal.food }}</h2>
+                    <h2>{{ animal.temperament }}</h2>
+                    <p>{{ animal.description }}</p>
+                    <img src="{{ animal.image_url }}" alt="{{ animal.name }}">
+                </div>
             </div>
         </div>
     </div>
 
     {% endblock %}
 
-{% endblock %}

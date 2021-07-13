@@ -58,3 +58,12 @@ def all_animals(request):
     }
 
     return render(request, 'animals/animals.html', context)
+
+
+def animal_details(request, animal_id):
+    animal = get_object_or_404(Animal, pk=animal_id)
+
+    context = {
+        'animal': animal,
+    }
+    return render(request, 'animals/animal_details.html', context)
