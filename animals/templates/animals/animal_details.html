@@ -6,14 +6,16 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="div text-white text-center">
-                    <h1>{{ animal.name }}</h1>
-                    <h2>Category: {{ animal.category.name }}</h2>
-                    <h2>{{ animal.latin_name }}</h2>
-                    <h2>{{ animal.food }}</h2>
-                    <h2>{{ animal.temperament }}</h2>
+                <div class="div text-white text-center animal-details-section box-shadow">
+                    <img class="animal-details-image" src="{{ animal.image_url }}" alt="{{ animal.name }}">
+                    <h2>{{ animal.name }}</h1>
+                    <h4>{{ animal.latin_name }}</4>
+                    <h4>Price: {{ animal.price }}SEK</h4>    
+                    <h4>Diet: {{ animal.food }}</h4>
+                    <h4>Temperament: {{ animal.temperament }}</h4>
                     <p>{{ animal.description }}</p>
-                    <img src="{{ animal.image_url }}" alt="{{ animal.name }}">
+                    
+                    <a href="#" class="btn btn-large btn-warning">Add to cart</a>
                 </div>
             </div>
         </div>

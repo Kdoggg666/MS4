@@ -5,16 +5,12 @@
 <div class="container">
     <div class="row">
         {% for animal in animals %}
-        <div class="row">
-            <div class="col">
-                <div class="div">
-                    <h1><a href="{% url 'animal_details' animal.id %}">{{ animal.name }}</a></h1>
-                </div>
+            <div class="col-sm-6 image-link hvr-grow ">
+                <img class="animal-details-image box-shadow" src="{{ animal.image_url }}" alt="{{ animal.name }}">
+                <h1><a href="{% url 'animal_details' animal.id %}"><span class="centered-image-text animal-logo-image-text">{{ animal.name }}</span></a></h1>
             </div>
-        </div>
-        {% endfor %}
-
-    </div>
+            {% endfor %}    
+    </div>      
 </div>
 {% endblock %}
 
