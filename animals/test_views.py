@@ -1,5 +1,6 @@
 from django.test import TestCase
 from .models import Animal
+from .views import all_animals, animal_details
 
 
 class TestViews(TestCase):
@@ -11,8 +12,7 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'animals/animals.html')
 
-    def test_animals_page_filter(self):
-        animal = Animal.objects.create(name='Test Animal', price=99.99)
-        response = self.client.get(f'/animals/{animal.name}')
+    def test_animal_details(self):
+        response = self.client.get('/animals/1/')
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'animals/animals.html')    
+        self.assertTemplateUsed(response, 'animals/animal_details.html')

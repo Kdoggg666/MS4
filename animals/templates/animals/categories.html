@@ -4,17 +4,16 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        {% for animal in animals %}
+        {% for category in current_categories %}
         <div class="row">
             <div class="col">
                 <div class="div">
-                    <h1><a href="{% url 'animal_details' animal.id %}">{{ animal.name }}</a></h1>
+                    <h1><a href="#">{{ category.name }}</a></h1>
                 </div>
             </div>
         </div>
+    
         {% endfor %}
-
     </div>
 </div>
 {% endblock %}
-
