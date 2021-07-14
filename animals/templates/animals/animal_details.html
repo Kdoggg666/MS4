@@ -9,7 +9,10 @@
                 <div class="div text-white text-center animal-details-section box-shadow">
                     <img class="animal-details-image" src="{{ animal.image_url }}" alt="{{ animal.name }}">
                     <h2>{{ animal.name }}</h1>
-                    <h4>{{ animal.latin_name }}</4>
+                    <h5>(<em>{{ animal.latin_name }}</em>)</h5>
+                    <h4>Country: {{ animal.country }}</h4>
+                    <h4>Max Length: {{ animal.max_length }}</h4>
+                    <h4>Lifespan: up to {{ animal.lifespan }} years</h4>     
                     <h4>Price: {{ animal.price }}SEK</h4>    
                     <h4>Diet: {{ animal.food }}</h4>
                     <h4>Temperament: {{ animal.temperament }}</h4>
