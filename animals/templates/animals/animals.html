@@ -6,6 +6,7 @@
 <div class="container mb-4">
     <div class="row">
         <div class="col text-center">
+            <a href="{% url 'animals' %}" class="btn btn-lg btn-success right hvr-grow">All Animals</a>
             <a href="{% url 'animals' %}?category=snakes" class="btn btn-lg btn-success right hvr-grow">Snakes</a>
             <a href="{% url 'animals' %}?category=lizards" class="btn btn-lg btn-success right hvr-grow">Lizards</a>
             <a href="{% url 'animals' %}?category=amphibians" class="btn btn-lg btn-success right hvr-grow">Amphibians</a>
@@ -19,7 +20,7 @@
         {% for animal in animals %}
             <div class="col-sm-6 image-link hvr-grow mb-4">
                 <img class="animal-details-image box-shadow" src="{{ animal.image_url }}" alt="{{ animal.name }}">
-                <h1><a href="{% url 'animal_details' animal.id %}"><span class="centered-image-text animal-logo-image-text">{{ animal.name }}</span></a></h1>
+                <h1><a href="{% url 'animal_details' animal.id %}"><span class="centered-image-text animal-logo-image-text">{{ animal.name|title }}</span></a></h1>
             </div>
             {% endfor %}    
     </div>      
