@@ -82,6 +82,10 @@ header {
     font-size: 60px;
 }
 
+.big-bottom-margin {
+    margin-bottom: 150px;
+}
+
 /*-- Footer --*/
 footer {
     height: 150px;

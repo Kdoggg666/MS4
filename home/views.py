@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from animals.views import all_animals
 
 
 def index(request):
