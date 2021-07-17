@@ -34,7 +34,7 @@
                 <p class="right">{{ animal.known_problems }}</p>
                 <br>
                 <h3 class="underline">More Information:</h3>
-                <p><a href="{{ animal.other_information }}" target="_blank" >Reptile Magazine</a></p>
+                <p><a href="{{ animal.other_information }}" target="_blank" >Further reading</a></p>
                 <br>
                 <a href="{% url 'animal_details' animal.id %}" class="btn btn-lg btn-warning hvr-grow">View {{ animal.name|title }} in our store</a>
             </div>
