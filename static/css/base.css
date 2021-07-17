@@ -20,7 +20,7 @@ header {
     background: rgba(0, 0, 0, 0.6) !important;
     width: 100%;
     margin: 0px 0px 50px 0px;
-    padding: 0;
+    padding: 10px;
 }
 
 .navbar-brand {
@@ -47,6 +47,10 @@ header {
 
 .navbar-nav>li>a:hover {
     color: rgba(251, 255, 41, 0.9) !important;
+}
+
+.search-bar-custom {
+    background-color: rgba(251, 255, 255, 0.6);
 }
 
 /*-- Information sections --*/
@@ -155,4 +159,18 @@ footer a i:hover {
 
 .box-shadow {
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.8);
+}
+
+/*-- Media Queries --*/
+
+@media only screen and (max-width: 991px) {
+    .navbar-collapse{
+        padding: 15px;
+        top:50px !important;
+        position:relative;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 15px;
+        text-align: center;
+        z-index: 999;
+      }
 }
