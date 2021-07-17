@@ -173,4 +173,7 @@ footer a i:hover {
         text-align: center;
         z-index: 999;
       }
+    .footer-info-divs {
+        display: none;
+    }
 }
