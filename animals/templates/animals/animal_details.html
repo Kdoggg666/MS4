@@ -9,26 +9,39 @@
                 <a href="{% url 'all_animals_care' %}" class="btn btn-lg btn-warning hvr-grow"><i class="fas fa-arrow-left"></i> Back to all Animals</a>
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <div class="div text-white text-center animal-details-section box-shadow">
-                    <img class="animal-details-image" src="{{ animal.image_url }}" alt="{{ animal.name }}">
-                    <h2>{{ animal.name|title }}</h1>
-                    <h5>(<em>{{ animal.latin_name }}</em>)</h5>
-                    <h4>Country: {{ animal.country }}</h4>
-                    <h4>Max Length: {{ animal.max_length }}</h4>
-                    <h4>Lifespan: up to {{ animal.lifespan }} years</h4>     
-                    <h4>Price: {{ animal.price }}SEK</h4>    
-                    <h4>Diet: {{ animal.food }}</h4>
-                    <h4>Temperament: {{ animal.temperament }}</h4>
+    <div class="row">
+        <div class="col-12 text-white text-center animal-details-section box-shadow">
+            <div class="row">
+                <div class="col-5 px-5 mb-4">
+                    <img class="animal-details-image box-shadow" src="{{ animal.image_url }}" alt="{{ animal.name }}">
+                </div>
+                <div class="col-7 px-5 left mb-4">
+                    <div class="text-left underline-div">
+                        <h2>{{ animal.name|title }}</h1>
+                        <h5>(<em>{{ animal.latin_name }}</em>)</h5>
+                    </div>
+                    <div class="right info-list">
+                        <ul>
+                            <h4>Country: <em>{{ animal.country }}</em></h4>
+                            <h4>Max Length: <em>{{ animal.max_length }}</em></h4>
+                            <h4>Lifespan: <em>up to {{ animal.lifespan }} years</em></h4>     
+                            <h4>Price: <em>{{ animal.price }}SEK</em></h4>    
+                            <h4>Diet: <em>{{ animal.food }}</em></h4>
+                            <h4>Temperament: <em>{{ animal.temperament }}</em></h4>
+                        </ul>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col-12">
                     <p>{{ animal.description }}</p>
                     
-                    <a href="#" class="btn btn-large btn-warning">Add to cart</a>
-                    <a href="{% url 'animal_care' animal.id %}" class="btn btn-large btn-warning">{{ animal.name|title }} Care Guide</a>
+                    <a href="#" class="btn btn-large btn-warning hvr-grow">Add to cart</a>
+                    <a href="{% url 'animal_care' animal.id %}" class="btn btn-large btn-warning hvr-grow">{{ animal.name|title }} Care Guide</a>
                 </div>
+            </div>    
             </div>
         </div>
-    </div>
+    </div>    
 
     {% endblock %}
 

@@ -94,6 +94,14 @@ header {
     text-decoration: underline;
 }
 
+.underline-div {
+    border-bottom: 2px solid white;
+}
+
+.info-list {
+    margin-top: 15px;
+}
+
 /*-- Footer --*/
 footer {
     height: 170px;
