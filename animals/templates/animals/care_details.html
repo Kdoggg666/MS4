@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="container big-bottom-margin">
+    <div class="row">
+        <div class="col">
+            <div class="div text-white text-center animal-details-section box-shadow">
+                <img class="animal-details-image" src="{{ animal.image_url }}" alt="{{ animal.name }}">
+                <h2>{{ animal.name }}</h1>
+                <h5>(<em>{{ animal.latin_name }}</em>)</h5>
+                <h3 class="underline">General Care:</h3>
+                <p>{{ animal.care_guide }}</p>
+                <h3 class="underline">Cage Setup:</h3>
+                <p>{{ animal.cage_setup }}</p>
+                <h3 class="underline">Lighting:</h3>
+                <p>{{ animal.lighting }}</p>
+                <h3 class="underline">Heating:</h3>
+                <p>{{ animal.heating }}</p>
+                <h3 class="underline">Heating:</h3>
+                <p>{{ animal.heating }}</p>
+                <h3 class="underline">Feeding:</h3>
+                <p>{{ animal.feeding_schedule }}</p>
+                <h3 class="underline">Known issues:</h3>
+                <p>{{ animal.known_problems }}</p>
+                <h3 class="underline">More Information:</h3>
+                <p><a href="{{ animal.other_information }}" target="_blank" >Reptile Magazine</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
