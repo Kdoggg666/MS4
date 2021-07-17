@@ -4,11 +4,16 @@
     {% block content %}
 
     <div class="container">
+        <div class="row mb-4 justify-content-center">
+            <div class="col">
+                <a href="{% url 'all_animals_care' %}" class="btn btn-lg btn-warning hvr-grow"><i class="fas fa-arrow-left"></i> Back to all Animals</a>
+            </div>
+        </div>
         <div class="row">
             <div class="col">
                 <div class="div text-white text-center animal-details-section box-shadow">
                     <img class="animal-details-image" src="{{ animal.image_url }}" alt="{{ animal.name }}">
-                    <h2>{{ animal.name }}</h1>
+                    <h2>{{ animal.name|title }}</h1>
                     <h5>(<em>{{ animal.latin_name }}</em>)</h5>
                     <h4>Country: {{ animal.country }}</h4>
                     <h4>Max Length: {{ animal.max_length }}</h4>
@@ -19,6 +24,7 @@
                     <p>{{ animal.description }}</p>
                     
                     <a href="#" class="btn btn-large btn-warning">Add to cart</a>
+                    <a href="{% url 'animal_care' animal.id %}" class="btn btn-large btn-warning">{{ animal.name|title }} Care Guide</a>
                 </div>
             </div>
         </div>
