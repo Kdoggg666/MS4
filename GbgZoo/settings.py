@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'home',  # my custome home app
     'animals',  # my custom animals app
+    'crispy_forms',  # Crispy forms to render forms easily
 ]
 
 MIDDLEWARE = [
@@ -87,7 +88,10 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-#  Log emails to the console instead of trying to send through gitpod - from walkthrough project
+# Crispy forms variable to use bootstrap templates
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#  Log emails to the console instead of trying to send through gitpod
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'

@@ -5,7 +5,7 @@ from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from .models import Animal, Category
-# from .forms import ProductForm
+from .forms import AnimalForm
 
 
 def all_animals(request):
@@ -140,3 +140,28 @@ def animal_care(request, animal_id):
         'animal': animal,
     }
     return render(request, 'animals/care_details.html', context)
+
+
+def add_animal(request):
+    """ Add an animal to GbgZoo """
+    # if not request.user.is_superuser:
+    #     messages.error(request, 'Sorry, only administrators can do that.')
+    #     return redirect(reverse('home'))
+
+    if request.method == 'POST':
+        form = AnimalForm(request.POST, request.FILES)
+        if form.is_valid():
+            animal = form.save()
+            messages.success(request, 'Successfully added animal!')
+            return redirect(reverse('animal_details', args=[animal.id]))
+        else:
+            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+    else:
+        form = AnimalForm()
+
+    template = 'animals/add_animal.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
