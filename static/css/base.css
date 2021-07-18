@@ -189,3 +189,19 @@ footer a i:hover {
         display: none;
     }
 }
+
+
+/*-- pagination --*/
+
+.pagination {
+    font-size: 15px;
+    color: greenyellow;
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+.pagination a {
+    color: rgba(251, 255, 41, 0.6);
+    font-style: bold;
+    text-decoration: none;
+}

@@ -3,9 +3,10 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
-
+from django.core.paginator import Paginator
 from .models import Animal, Category
 # from .forms import ProductForm
+
 
 def all_animals(request):
     """ A view to show all animals, including sorting and search queries """
@@ -46,12 +47,17 @@ def all_animals(request):
             animals = animals.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
+    #  Pagination from Django docs. 
+    paginator = Paginator(animals, 6)  # Show 6 results per page.
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
         'animals': animals,
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
+        'page_obj': page_obj,
     }
 
     return render(request, 'animals/animals.html', context)
@@ -96,12 +102,17 @@ def all_animals_care(request):
             animals = animals.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
+    #  Pagination from Django docs. 
+    paginator = Paginator(animals, 6)  # Show 6 results per page.
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
         'animals': animals,
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
+        'page_obj': page_obj,
     }
 
     return render(request, 'animals/care.html', context)
