@@ -60,6 +60,15 @@ header {
     padding: 10px;
 }
 
+.more-information-link {
+    text-decoration: none;
+    color: rgba(251, 255, 41, 0.9);
+}
+
+.more-information-link:hover {
+    color: yellowgreen;
+}
+
 .custom-top-margin {
     margin-top: 100px;
 }
@@ -121,8 +130,20 @@ footer a i {
     margin: 0 10px 0 10px;
 }
 
-footer a i:hover {
-    color: rgba(251, 255, 41, 0.9);
+.facebook:hover {
+    color: #4267B2;
+}
+
+.twitter:hover {
+    color: #1DA1F2;
+}
+
+.instagram:hover {
+    color: #C13584;
+}
+
+.youtube:hover {
+    color: #FF0000;
 }
 
 /*-- Animal Details --*/
@@ -196,12 +217,12 @@ footer a i:hover {
 .pagination {
     font-size: 15px;
     color: greenyellow;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.6);
     text-align: center;
 }
 
 .pagination a {
-    color: rgba(251, 255, 41, 0.6);
+    color: rgba(251, 255, 41, 0.9);
     font-style: bold;
     text-decoration: none;
 }

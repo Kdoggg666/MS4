@@ -42,6 +42,7 @@ class Animal(models.Model):
     feeding_schedule = models.TextField()
     known_problems = models.TextField()
     other_information = models.TextField()
+    other_information_name = models.CharField(max_length=30, default="")
 
     def __str__(self):
         return self.name
