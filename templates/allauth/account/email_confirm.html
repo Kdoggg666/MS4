@@ -7,13 +7,16 @@
 
 
 {% block content %}
-            <h1>{% trans "Confirm E-mail Address" %}</h1>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-6 animal-details-section box-shadow">
+            <h1 class="white text-center">{% trans "Confirm E-mail Address" %}</h1>
 
             {% if confirmation %}
 
             {% user_display confirmation.email_address.user as user_display %}
 
-            <p>{% blocktrans with confirmation.email_address.email as email %}Please confirm that <a
+            <p class="white text-center">{% blocktrans with confirmation.email_address.email as email %}Please confirm that <a class="link-custom"
                     href="mailto:{{ email }}">{{ email }}</a> is an e-mail address for user
                 {{ user_display }}.{% endblocktrans %}</p>
 
@@ -26,7 +29,7 @@
 
             {% url 'account_email' as email_url %}
 
-            <p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a
+            <p class="white text-center">{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a
                     href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktrans %}</p>
 
             {% endif %}

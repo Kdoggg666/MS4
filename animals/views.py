@@ -43,12 +43,15 @@ def all_animals(request):
                 messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(
+                        name__icontains=query) | Q(
+                                                   description__icontains=query
+                                                   )
             animals = animals.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
-    #  Pagination from Django docs. 
-    paginator = Paginator(animals, 6)  # Show 6 results per page.
+    #  Pagination from Django docs.
+    paginator = Paginator(animals, 9)  # Show 9 results per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -103,7 +106,7 @@ def all_animals_care(request):
 
     current_sorting = f'{sort}_{direction}'
     #  Pagination from Django docs. 
-    paginator = Paginator(animals, 6)  # Show 6 results per page.
+    paginator = Paginator(animals, 9)  # Show 9 results per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -142,11 +145,12 @@ def animal_care(request, animal_id):
     return render(request, 'animals/care_details.html', context)
 
 
+@login_required
 def add_animal(request):
     """ Add an animal to GbgZoo """
-    # if not request.user.is_superuser:
-    #     messages.error(request, 'Sorry, only administrators can do that.')
-    #     return redirect(reverse('home'))
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only administrators can do that.')
+        return redirect(reverse('home'))
 
     if request.method == 'POST':
         form = AnimalForm(request.POST, request.FILES)
@@ -155,7 +159,9 @@ def add_animal(request):
             messages.success(request, 'Successfully added animal!')
             return redirect(reverse('animal_details', args=[animal.id]))
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            messages.error(request, 
+                           'Failed to add product. Please ensure the form is \
+                           valid.')
     else:
         form = AnimalForm()
 
@@ -165,3 +171,46 @@ def add_animal(request):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def edit_animal(request, animal_id):
+    """ Edit an animal """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store admins can do that.')
+        return redirect(reverse('home'))
+
+    animal = get_object_or_404(Animal, pk=animal_id)
+    if request.method == 'POST':
+        form = AnimalForm(request.POST, request.FILES, instance=animal)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated animal!')
+            return redirect(reverse('animal_details', args=[animal.id]))
+        else:
+            messages.error(request, 'Failed to update animal. Please ensure \
+                           the form is valid.')
+    else:
+        form = AnimalForm(instance=animal)
+        messages.info(request, f'You are editing {animal.name}')
+
+    template = 'animals/edit_animal.html'
+    context = {
+        'form': form,
+        'animal': animal,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def delete_animal(request, animal_id):
+    """ Delete an animal """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store admins can do that.')
+        return redirect(reverse('home'))
+
+    animal = get_object_or_404(Animal, pk=animal_id)
+    animal.delete()
+    messages.success(request, 'Animal deleted!')
+    return redirect(reverse('animals'))

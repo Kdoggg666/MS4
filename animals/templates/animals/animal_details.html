@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
 
-    {% block content %}
+{% block content %}
 
-    <div class="container">
-        <div class="row mb-4 justify-content-center">
-            <div class="col">
-                <a href="{% url 'all_animals_care' %}" class="btn btn-lg btn-warning hvr-grow"><i class="fas fa-arrow-left"></i> Back to all Animals</a>
-            </div>
+<div class="container">
+    <div class="row mb-4 justify-content-center">
+        <div class="col">
+            <a href="{% url 'all_animals_care' %}" class="btn btn-lg btn-warning hvr-grow"><i
+                    class="fas fa-arrow-left"></i> Back to all Animals</a>
         </div>
+    </div>
     <div class="row">
         <div class="col-12 text-white text-center animal-details-section box-shadow big-bottom-margin">
             <div class="row">
@@ -18,30 +19,68 @@
                 <div class="col-md-7 col-sm-8 px-5 left mb-4">
                     <div class="text-left underline-div">
                         <h2>{{ animal.name|title }}</h1>
-                        <h5>(<em>{{ animal.latin_name }}</em>)</h5>
+                            <h5>(<em>{{ animal.latin_name }}</em>)</h5>
                     </div>
                     <div class="right info-list">
                         <ul>
                             <h4>Country: <em>{{ animal.country }}</em></h4>
                             <h4>Max Length: <em>{{ animal.max_length }}</em></h4>
-                            <h4>Lifespan: <em>up to {{ animal.lifespan }} years</em></h4>     
-                            <h4>Price: <em>{{ animal.price }}SEK</em></h4>    
+                            <h4>Lifespan: <em>up to {{ animal.lifespan }} years</em></h4>
+                            <h4>Price: <em>{{ animal.price }}SEK</em></h4>
                             <h4>Diet: <em>{{ animal.food }}</em></h4>
                             <h4>Temperament: <em>{{ animal.temperament }}</em></h4>
                         </ul>
                     </div>
                 </div>
-            <div class="row">
-                <div class="col-12">
-                    <p>{{ animal.description }}</p>
-                    
-                    <a href="#" class="btn btn-large btn-warning hvr-grow">Add to cart</a>
-                    <a href="{% url 'animal_care' animal.id %}" class="btn btn-large btn-warning hvr-grow">{{ animal.name|title }} Care Guide</a>
+                <div class="row">
+                    <div class="col-12">
+                        <p>{{ animal.description }}</p>
+
+                        <a href="#" class="btn btn-lg btn-warning hvr-grow">Add to cart</a>
+                        <a href="{% url 'animal_care' animal.id %}"
+                            class="btn btn-lg btn-warning hvr-grow">{{ animal.name|title }} Care Guide</a>
+                            {% if user.is_superuser %}    
+                                <a href="{% url 'edit_animal' animal.id %}" class="btn btn-lg btn-warning hvr-grow">Edit
+                                {{ animal.name|title }}</a>
+                                <a type="button" class="btn btn-lg btn-danger hvr-grow" data-toggle="modal" data-target="#exampleModal">
+                                Delete {{ animal.name|title }}</a>
+                            {% endif %}
+                    </div>
                 </div>
-            </div>    
             </div>
         </div>
-    </div>    
+    </div>
+
+
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Delete {{ animal.name|title }}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning hvr-grow" data-dismiss="modal">Cancel</button>
+              <a href="{% url 'delete_animal' animal.id %}" class="btn btn-danger hvr-grow">Delete
+                {{ animal.name|title }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
 
     {% endblock %}
 
+    {% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+    </script>
+    {% endblock %}
