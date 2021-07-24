@@ -19,7 +19,7 @@ def add_to_cart(request, item_id):
     animal = get_object_or_404(Animal, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
-    cart = request.session.get('bag', {})
+    cart = request.session.get('cart', {})
     if item_id in list(cart.keys()):
         cart[item_id] += quantity
         messages.success(request, f'Updated {animal.name} quantity to {cart[item_id]}')
@@ -47,7 +47,7 @@ def adjust_cart(request, item_id):
         messages.success(request, f'Removed {animal.name} from your cart')
 
     request.session['cart'] = cart
-    return redirect(reverse('view_cart'))
+    return redirect(reverse('view_shopping_cart'))
 
 
 def remove_from_cart(request, item_id):
