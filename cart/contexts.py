@@ -17,19 +17,20 @@ def cart_contents(request):
             total += item_data * animal.price
             animal_count += item_data
             cart_items.append({
-                'name': item_id,
+                'item_id': item_id,
                 'quantity': item_data,
                 'animal': animal,
             })
         else:
             animal = get_object_or_404(Animal, pk=item_id)
-            for quantity in item_data.items():
+            for size, quantity in item_data['items_by_size'].items():
                 total += quantity * animal.price
                 animal_count += quantity
                 cart_items.append({
-                    'name': item_id,
+                    'item_id': item_id,
                     'quantity': quantity,
                     'animal': animal,
+                    'size': size,
                     })
 
     if total < settings.FREE_DELIVERY_THRESHOLD:

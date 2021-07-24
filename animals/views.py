@@ -51,7 +51,7 @@ def all_animals(request):
 
     current_sorting = f'{sort}_{direction}'
     #  Pagination from Django docs.
-    paginator = Paginator(animals, 9)  # Show 9 results per page.
+    paginator = Paginator(animals, 8)  # Show 8 results per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -106,7 +106,7 @@ def all_animals_care(request):
 
     current_sorting = f'{sort}_{direction}'
     #  Pagination from Django docs. 
-    paginator = Paginator(animals, 9)  # Show 9 results per page.
+    paginator = Paginator(animals, 8)  # Show 8 results per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
