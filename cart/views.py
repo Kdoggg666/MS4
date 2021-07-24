@@ -14,17 +14,15 @@ def view_shopping_cart(request):
 
 
 def add_to_cart(request, item_id):
-    """ Add a quantity of the specified product to the shopping cart """
+    """ Add a animal to the shopping cart """
 
     animal = get_object_or_404(Animal, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
-    cart = request.session.get('cart', {})
+    cart = request.session.get('bag', {})
     if item_id in list(cart.keys()):
         cart[item_id] += quantity
-        messages.success(
-                         request, f'Updated {animal.name} \
-                         quantity to {cart[item_id]}')
+        messages.success(request, f'Updated {animal.name} quantity to {cart[item_id]}')
     else:
         cart[item_id] = quantity
         messages.success(request, f'Added {animal.name} to your cart')
