@@ -127,11 +127,11 @@ def animal_details(request, animal_id):
     """
     animal = get_object_or_404(Animal, pk=animal_id)
     ratings = Rating.objects.all()
-    my_tuples = zip(animal, ratings)
+
     context = {
         'animal': animal,
         'ratings': ratings,
-        'my_tuples': my_tuples
+
     }
     return render(request, 'animals/animal_details.html', context)
 

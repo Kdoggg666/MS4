@@ -30,11 +30,12 @@
                             <h4>Diet: <em>{{ animal.food }}</em></h4>
                             <h4>Temperament: <em>{{ animal.temperament }}</em></h4>
                             <h4>Rating: 
-                                    {% for ani, rating in my_tuples %}
-                                        {% if ani.name == rating.animal %}
-                                            it works
+                                    {% for rating in ratings %}
+                                        {% if animal.name|lower == rating.animal|lower %}
+                                            {{ rating.rating_out_of_five }}/5
                                         {% else %}
                                             it didnt work
+                                            
                                     {% endif %}
                                 {% endfor %}    
                             </h4>
