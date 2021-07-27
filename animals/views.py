@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from .models import Animal, Category
+from .models import Animal, Category, Rating
 from .forms import AnimalForm
 
 
@@ -41,7 +41,7 @@ def all_animals(request):
             query = request.GET['q']
             if not query:
                 messages.error(request, "You didn't enter any search criteria!")
-                return redirect(reverse('products'))
+                return redirect(reverse('animals'))
 
             queries = Q(
                         name__icontains=query) | Q(
@@ -99,7 +99,7 @@ def all_animals_care(request):
             query = request.GET['q']
             if not query:
                 messages.error(request, "You didn't enter any search criteria!")
-                return redirect(reverse('products'))
+                return redirect(reverse('animals'))
 
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             animals = animals.filter(queries)
@@ -123,12 +123,15 @@ def all_animals_care(request):
 
 def animal_details(request, animal_id):
     """
-    View for Animal Details.
+    View for Animal Details with ratings.
     """
     animal = get_object_or_404(Animal, pk=animal_id)
-
+    ratings = Rating.objects.all()
+    my_tuples = zip(animal, ratings)
     context = {
         'animal': animal,
+        'ratings': ratings,
+        'my_tuples': my_tuples
     }
     return render(request, 'animals/animal_details.html', context)
 

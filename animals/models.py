@@ -46,3 +46,19 @@ class Animal(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Rating(models.Model):
+    rate_id = models.CharField(max_length=30, null=True, blank=True)
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE,
+                               related_name='rating',
+                               related_query_name='rating')
+    user = models.CharField(max_length=10, default="")
+    created = models.DateField(auto_now_add=True)
+    updated = models.DateField(auto_now=True)
+    rating_out_of_five = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.title

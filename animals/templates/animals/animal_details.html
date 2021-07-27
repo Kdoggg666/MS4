@@ -29,6 +29,15 @@
                             <h4>Price: <em>{{ animal.price }}SEK</em></h4>
                             <h4>Diet: <em>{{ animal.food }}</em></h4>
                             <h4>Temperament: <em>{{ animal.temperament }}</em></h4>
+                            <h4>Rating: 
+                                    {% for ani, rating in my_tuples %}
+                                        {% if ani.name == rating.animal %}
+                                            it works
+                                        {% else %}
+                                            it didnt work
+                                    {% endif %}
+                                {% endfor %}    
+                            </h4>
                         </ul>
                     </div>
                 </div>
@@ -92,6 +101,17 @@
                         </form>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container big-bottom-margin">
+        <div class="row">
+            <div class="col-12 text-white"> 
+                {% for r in ratings %}
+                   <h1> {{ r.title }}</h1>
+                {% endfor %}    
+    
             </div>
         </div>
     </div>
