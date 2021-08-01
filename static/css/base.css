@@ -297,3 +297,13 @@ label {
 .custom-toast-header strong {
     color: chartreuse;
 }
+
+.toast-close {
+    position: absolute;
+    right: 5px;
+}
+
+.toast-close span {
+    color: white;
+    border: 1px solid white;
+}
