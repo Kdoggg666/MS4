@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import Q, Avg
 from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from .models import Animal, Category, Rating
 from .forms import AnimalForm, ReviewForm
+
 
 
 def all_animals(request):
@@ -127,10 +128,12 @@ def animal_details(request, animal_id):
     """
     animal = get_object_or_404(Animal, pk=animal_id)
     ratings = Rating.objects.all()
+    average = Rating.objects.annotate(Avg('rating_out_of_five'))
 
     context = {
         'animal': animal,
         'ratings': ratings,
+        'average': average,
 
     }
     return render(request, 'animals/animal_details.html', context)
@@ -240,6 +243,7 @@ def add_review(request, animal_id):
     template = 'animals/add_review.html'
     context = {
         'form': form,
+        'animal': animal,
     }
 
     return render(request, template, context)

@@ -29,6 +29,7 @@
                             <h4>Price: <em>{{ animal.price }}SEK</em></h4>
                             <h4>Diet: <em>{{ animal.food }}</em></h4>
                             <h4>Temperament: <em>{{ animal.temperament }}</em></h4>
+                            <h4>Average rating: {{ average }}</h4>
                             <h4><a href="{% url 'add_review' animal.id %}">Review this Animal</a>
                             </h4>
                         </ul>

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -49,13 +50,12 @@ class Animal(models.Model):
 
 
 class Rating(models.Model):
-    rate_id = models.CharField(max_length=30, null=True, blank=True)
     title = models.CharField(max_length=255)
     content = models.TextField()
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE,
                                related_name='rating',
                                related_query_name='rating')
-    user = models.CharField(max_length=10, default="")
+    user = request.user.id
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
     rating_out_of_five = models.IntegerField(default=0)
