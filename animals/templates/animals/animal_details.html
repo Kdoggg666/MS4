@@ -4,14 +4,14 @@
 {% block content %}
 
 <div class="container">
-    <div class="row mb-4 justify-content-center">
+    <div class="row mb-2 justify-content-center">
         <div class="col">
             <a href="{% url 'all_animals_care' %}" class="btn btn-lg btn-warning hvr-grow"><i
                     class="fas fa-arrow-left"></i> Back to all Animals</a>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 text-white text-center animal-details-section box-shadow big-bottom-margin">
+    <div class="row mb-4">
+        <div class="col-12 text-white text-center animal-details-section box-shadow">
             <div class="row">
                 <div class="col-md-5 col-sm-7 px-5 mb-4">
                     <img class="animal-details-image box-shadow" src="{{ animal.image_url }}" alt="{{ animal.name }}">
@@ -29,15 +29,7 @@
                             <h4>Price: <em>{{ animal.price }}SEK</em></h4>
                             <h4>Diet: <em>{{ animal.food }}</em></h4>
                             <h4>Temperament: <em>{{ animal.temperament }}</em></h4>
-                            <h4>Rating:
-                                {% for rating in ratings %}
-                                {% if animal.name|lower == rating.animal|lower %}
-                                {{ rating.rating_out_of_five }}/5
-                                {% else %}
-                                it didnt work
-
-                                {% endif %}
-                                {% endfor %}
+                            <h4><a href="{% url 'add_review' animal.id %}">Review this Animal</a>
                             </h4>
                         </ul>
                     </div>
@@ -116,12 +108,36 @@
     </div>
 
 
-    <div class="row">
+    <div class="row big-bottom-margin">
         {% for rating in ratings %}
         {% if animal.name|lower == rating.animal|lower %}
-        <div class="col-4 text-white text-center animal-details-section box-shadow big-bottom-margin">
+        <div class="col-4 text-white text-center animal-details-section box-shadow">
             <h4>{{ rating.title }}</h4>
-            <h5>Rating: {{ rating.rating_out_of_five }}/5</h5>
+            <h5>Reviewed by: {{ review.user }}</h5>
+            <h5>Rating: 
+                {% if rating.rating_out_of_five == 1 %}
+                    <i class="fas fa-star"></i>
+                {% elif rating.rating_out_of_five == 2 %}
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                {% elif rating.rating_out_of_five == 3 %}
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                {% elif rating.rating_out_of_five == 4 %}
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                {% elif rating.rating_out_of_five == 5 %}
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                {% else %}
+                    This Product has not been rated yet.
+                {% endif %}        
+            </h5>
             <p>{{ rating.content }}</p>
         </div>
         {% endif %}

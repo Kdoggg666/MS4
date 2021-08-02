@@ -5,7 +5,7 @@ from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from .models import Animal, Category, Rating
-from .forms import AnimalForm
+from .forms import AnimalForm, ReviewForm
 
 
 def all_animals(request):
@@ -217,3 +217,29 @@ def delete_animal(request, animal_id):
     animal.delete()
     messages.success(request, 'Animal deleted!')
     return redirect(reverse('animals'))
+
+
+@login_required
+def add_review(request, animal_id):
+    """ Add a review to an animal """
+    animal = get_object_or_404(Animal, pk=animal_id)
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added reveiw!')
+            return redirect(reverse('animal_details', args=[animal.id]))
+        else:
+            messages.error(request,
+                           'Failed to add reveiw. Please ensure the form is \
+                           valid.')
+    else:
+        form = ReviewForm()
+
+    template = 'animals/add_review.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
