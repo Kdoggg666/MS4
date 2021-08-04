@@ -16,25 +16,25 @@
                 <h2>{{ animal.name|title }}</h1>
                 <h5>(<em>{{ animal.latin_name }}</em>)</h5>
                 <h3 class="underline left">General Care:</h3>
-                <p class="left">{{ animal.care_guide }}</p>
+                <p class="left">{{ care.care_guide }}</p>
                 <br>
                 <h3 class="underline right">Cage Setup:</h3>
-                <p class="right">{{ animal.cage_setup }}</p>
+                <p class="right">{{ care.cage_setup }}</p>
                 <br>
                 <h3 class="underline left">Lighting:</h3>
-                <p class="left">{{ animal.lighting }}</p>
+                <p class="left">{{ care.lighting }}</p>
                 <br>
                 <h3 class="underline right">Heating:</h3>
-                <p class="right">{{ animal.heating }}</p>
+                <p class="right">{{ care.heating }}</p>
                 <br>
                 <h3 class="underline left">Feeding:</h3>
-                <p class="left">{{ animal.feeding_schedule }}</p>
+                <p class="left">{{ care.feeding_schedule }}</p>
                 <br>
                 <h3 class="underline right">Known issues:</h3>
-                <p class="right">{{ animal.known_problems }}</p>
+                <p class="right">{{ care.known_problems }}</p>
                 <br>
                 <h3 class="underline">More Information:</h3>
-                <p><a href="{{ animal.other_information }}" class="more-information-link hvr-grow" target="_blank" >{{ animal.other_information_name|title }}</a></p>
+                <p><a href="{{ animal.other_information }}" class="more-information-link hvr-grow" target="_blank" >{{ care.other_information_name|title }}</a></p>
                 <br>
                 <a href="{% url 'animal_details' animal.id %}" class="btn btn-lg btn-warning hvr-grow">View {{ animal.name|title }} in our store</a>
             </div>

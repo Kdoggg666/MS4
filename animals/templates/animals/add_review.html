@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% load crispy_forms_tags %} 
+ 
 
 {% block content %}
     <div class="container">
@@ -15,19 +15,16 @@
                 <form  method="POST" action="{% url 'add_review' animal.id %}" class="form mb-4" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in form %}
-                        {% if field.name != 'image' %}
                             {{ field | as_crispy_field }}
-                        {% else %}
-                            {{ field }}
-                        {% endif %}
-                    {% endfor %}                    
+                    {% endfor %} 
+                    <div class="row">
+                        <div class="text-center">
+                            <a class="btn btn-lg btn-warning hvr-grow" href="{% url 'animals' %}">Cancel</a>
+                            <button class="btn btn-lg btn-warning hvr-grow" type="submit">Add Review</button>
+                        </div>
+                    </div>                   
                 </form>
-                <div class="row">
-                    <div class="text-center">
-                        <a class="btn btn-lg btn-warning hvr-grow" href="{% url 'animals' %}">Cancel</a>
-                        <button class="btn btn-lg btn-warning hvr-grow" type="submit">Add Review</button>
-                    </div>
-                </div>
+
             </div>            
         </div>
     </div>

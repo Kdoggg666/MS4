@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -18,7 +17,7 @@ class Category(models.Model):
 
 class Animal(models.Model):
     """
-    Animal class.
+    Animal model.
     """
     category = models.ForeignKey('Category', null=True, blank=True,
                                  on_delete=models.SET_NULL)
@@ -36,6 +35,21 @@ class Animal(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     temperature = models.CharField(max_length=30, default="")
+
+    def __str__(self):
+        return self.name
+
+
+class Care(models.Model):
+    """
+   Care guide model.
+    """
+    name = models.CharField(max_length=30, default="")
+    category = models.ForeignKey('Category', null=True, blank=True,
+                                 on_delete=models.SET_NULL)
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE,
+                               related_name='care',
+                               related_query_name='care')
     care_guide = models.TextField()
     cage_setup = models.TextField()
     lighting = models.TextField()
@@ -55,7 +69,7 @@ class Rating(models.Model):
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE,
                                related_name='rating',
                                related_query_name='rating')
-    user = request.user.id
+    user = models.CharField(max_length=10, default="")
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
     rating_out_of_five = models.IntegerField(default=0)

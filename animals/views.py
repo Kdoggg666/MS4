@@ -4,9 +4,8 @@ from django.db.models import Q, Avg
 from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from .models import Animal, Category, Rating
+from .models import Animal, Category, Rating, Care
 from .forms import AnimalForm, ReviewForm
-
 
 
 def all_animals(request):
@@ -71,6 +70,8 @@ def all_animals_care(request):
     """ A view to show all animal care guides, including sorting and search queries """
 
     animals = Animal.objects.all()
+    care = Care.objects.all()
+    objects_list = list(zip(animals, care))
     query = None
     categories = None
     sort = None
@@ -107,7 +108,7 @@ def all_animals_care(request):
 
     current_sorting = f'{sort}_{direction}'
     #  Pagination from Django docs. 
-    paginator = Paginator(animals, 6)  # Show 6 results per page.
+    paginator = Paginator(objects_list, 6)  # Show 6 results per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -117,6 +118,8 @@ def all_animals_care(request):
         'current_categories': categories,
         'current_sorting': current_sorting,
         'page_obj': page_obj,
+        'care': care,
+        'objects_list': objects_list,
     }
 
     return render(request, 'animals/care.html', context)
@@ -144,9 +147,11 @@ def animal_care(request, animal_id):
     View for Animal Care.
     """
     animal = get_object_or_404(Animal, pk=animal_id)
+    care = get_object_or_404(Care, pk=animal_id)
 
     context = {
         'animal': animal,
+        'care': care,
     }
     return render(request, 'animals/care_details.html', context)
 
@@ -163,13 +168,16 @@ def add_animal(request):
         if form.is_valid():
             animal = form.save()
             messages.success(request, 'Successfully added animal!')
+            print('Validated')
             return redirect(reverse('animal_details', args=[animal.id]))
         else:
-            messages.error(request, 
-                           'Failed to add product. Please ensure the form is \
+            messages.error(request,
+                           'Failed to add animal. Please ensure the form is \
                            valid.')
+            print('not Validated')
     else:
         form = AnimalForm()
+        print('else')
 
     template = 'animals/add_animal.html'
     context = {
