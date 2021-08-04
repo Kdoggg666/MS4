@@ -1,5 +1,5 @@
 from django import forms
-from .models import Animal, Category, Rating
+from .models import Animal, Category, Rating, Care
 
 
 class AnimalForm(forms.ModelForm):
@@ -30,3 +30,15 @@ class ReviewForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         categories = Category.objects.all()
         animals = Animal.objects.all()
+
+
+class CareForm(forms.ModelForm):
+
+    class Meta:
+        model = Care
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        animals = Animal.objects.all()
+        care = Care.objects.all()

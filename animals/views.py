@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
-from django.db.models import Q, Avg
+from django.db.models import Q
 from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from .models import Animal, Category, Rating, Care
-from .forms import AnimalForm, ReviewForm
+from .forms import AnimalForm, ReviewForm, CareForm
 
 
 def all_animals(request):
@@ -67,8 +67,9 @@ def all_animals(request):
 
 
 def all_animals_care(request):
-    """ A view to show all animal care guides, including sorting and search queries """
-
+    """
+    A view to show all animal care guides, including sorting and search queries 
+    """
     animals = Animal.objects.all()
     care = Care.objects.all()
     objects_list = list(zip(animals, care))
@@ -255,6 +256,69 @@ def add_review(request, animal_id):
     context = {
         'form': form,
         'animal': animal,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def add_care(request, animal_id):
+    """ Add an care guide to animal """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only administrators can do that.')
+        return redirect(reverse('home'))
+
+    animal = get_object_or_404(Animal, pk=animal_id)
+
+    if request.method == 'POST':
+        form = CareForm(request.POST, request.FILES)
+        if form.is_valid():
+            animal = form.save()
+            messages.success(request, 'Successfully added Care guide!')
+            return redirect(reverse('animal_care', args=[animal.id]))
+        else:
+            messages.error(request,
+                           'Failed to add care guide. Please ensure the form is \
+                           valid.')
+    else:
+        form = CareForm()
+
+    template = 'animals/add_care.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def edit_care(request, animal_id):
+    """ Edit an care guide """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store admins can do that.')
+        return redirect(reverse('home'))
+
+    care = get_object_or_404(Care, pk=animal_id)
+    animal = get_object_or_404(Animal, pk=animal_id)
+
+    if request.method == 'POST':
+        form = CareForm(request.POST, request.FILES, instance=care)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated care guide!')
+            return redirect(reverse('animal_care', args=[animal.id]))
+        else:
+            messages.error(request, 'Failed to update care guide. Please ensure \
+                           the form is valid.')
+    else:
+        form = CareForm(instance=care)
+        messages.info(request, f'You are editing {care.name}')
+
+    template = 'animals/edit_care.html'
+    context = {
+        'form': form,
+        'animal': animal,
+        'care': care,
     }
 
     return render(request, template, context)

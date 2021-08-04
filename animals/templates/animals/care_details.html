@@ -37,6 +37,9 @@
                 <p><a href="{{ animal.other_information }}" class="more-information-link hvr-grow" target="_blank" >{{ care.other_information_name|title }}</a></p>
                 <br>
                 <a href="{% url 'animal_details' animal.id %}" class="btn btn-lg btn-warning hvr-grow">View {{ animal.name|title }} in our store</a>
+                {% if user.is_superuser %}
+                    <a href="{% url 'edit_care' animal.id %}" class="btn btn-lg btn-warning hvr-grow">Edit {{ animal.name|title }} Care Guide</a>
+                {% endif %}    
             </div>
         </div>
     </div>
