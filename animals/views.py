@@ -107,7 +107,7 @@ def all_animals_care(request):
             animals = animals.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
-    #  Pagination from Django docs. 
+    #  Pagination from Django docs.
     paginator = Paginator(objects_list, 6)  # Show 6 results per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -129,14 +129,17 @@ def animal_details(request, animal_id):
     """
     View for Animal Details with ratings.
     """
-    animal = get_object_or_404(Animal, pk=animal_id)
+    try:
+        care = Care.objects.get(pk=animal_id)
+    except Care.DoesNotExist:
+        care = Care.objects.all()
     ratings = Rating.objects.all()
-    average = Rating.objects.annotate(Avg('rating_out_of_five'))
+    animal = get_object_or_404(Animal, pk=animal_id)
 
     context = {
         'animal': animal,
         'ratings': ratings,
-        'average': average,
+        'care': care,
 
     }
     return render(request, 'animals/animal_details.html', context)

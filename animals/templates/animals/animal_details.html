@@ -6,8 +6,8 @@
 <div class="container">
     <div class="row mb-2 justify-content-center">
         <div class="col">
-            <a href="{% url 'all_animals_care' %}" class="btn btn-lg btn-warning hvr-grow"><i
-                    class="fas fa-arrow-left"></i> Back to all Animals</a>
+            <a href="{% url 'animals' %}" class="btn btn-lg btn-warning hvr-grow">
+                <i class="fas fa-arrow-left"></i> Back to all Animals</a>
         </div>
     </div>
     <div class="row mb-4">
@@ -38,8 +38,10 @@
                 <div class="row">
                     <div class="col-12">
                         <p>{{ animal.description }}</p>
-                        <a href="{% url 'animal_care' animal.id %}"
-                            class="btn btn-lg btn-warning hvr-grow">{{ animal.name|title }} Care Guide</a>
+                            {% if animal.name|lower == care.name|lower %}
+                                <a href="{% url 'animal_care' animal.id %}"
+                                class="btn btn-lg btn-warning hvr-grow">{{ animal.name|title }} Care Guide</a>
+                            {% endif %}    
                         {% if user.is_superuser %}
                         <a href="{% url 'edit_animal' animal.id %}" class="btn btn-lg btn-warning hvr-grow">Edit
                             {{ animal.name|title }}</a>
