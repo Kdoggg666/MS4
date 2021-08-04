@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'animals',  # my custom animals app
     'crispy_forms',  # Crispy forms to render forms easily
     'cart',  # my custom shopping cart app
+    'care',  # my custom care app
 ]
 
 MIDDLEWARE = [

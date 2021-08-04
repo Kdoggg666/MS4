@@ -24,15 +24,11 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        {% for animal, care in page_obj %}
-            {% if animal.name == care.name %}
+        {% for animal in animals %}
                 <div class="col-sm-6 image-link hvr-grow mb-4">
                     <img class="animal-details-image box-shadow" src="{{ animal.image_url }}" alt="{{ animal.name }}">
                     <h1><a href="{% url 'animal_care' animal.id %}"><span class="centered-image-text animal-logo-image-text">{{ animal.name|title }}</span></a></h1>
-                </div>
-            {% else %}
-                no animals found
-            {% endif %}    
+                </div>  
         {% endfor %}    
     </div>
     <!-- Pagination -->
