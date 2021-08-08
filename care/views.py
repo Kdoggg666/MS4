@@ -15,7 +15,6 @@ def all_animals_care(request):
     """
     animals = Animal.objects.all()
     care = Care.objects.all()
-    objects_list = list(zip(animals, care))
     query = None
     categories = None
     sort = None
@@ -49,7 +48,7 @@ def all_animals_care(request):
 
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             animals = animals.filter(queries)
-
+    objects_list = list(zip(animals, care))
     current_sorting = f'{sort}_{direction}'
     #  Pagination from Django docs.
     paginator = Paginator(objects_list, 6)  # Show 6 results per page.
@@ -89,8 +88,6 @@ def add_care(request):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only administrators can do that.')
         return redirect(reverse('home'))
-
-    #  animal = get_object_or_404(Animal, pk=animal_id)
 
     if request.method == 'POST':
         form = CareForm(request.POST, request.FILES)
