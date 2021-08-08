@@ -84,13 +84,13 @@ def animal_care(request, animal_id):
 
 
 @login_required
-def add_care(request, animal_id):
+def add_care(request):
     """ Add an care guide to animal """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only administrators can do that.')
         return redirect(reverse('home'))
 
-    animal = get_object_or_404(Animal, pk=animal_id)
+    #  animal = get_object_or_404(Animal, pk=animal_id)
 
     if request.method == 'POST':
         form = CareForm(request.POST, request.FILES)

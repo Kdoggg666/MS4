@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from care.views import *
+
 
 urlpatterns = [
     path('', views.all_animals, name='animals'),
