@@ -18,7 +18,7 @@ class Care(models.Model):
     heating = models.TextField()
     feeding_schedule = models.TextField()
     known_problems = models.TextField()
-    other_information = models.TextField()
+    other_information = models.CharField(max_length=100, default="")
     other_information_name = models.CharField(max_length=30, default="")
 
     def __str__(self):
