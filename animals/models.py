@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Category(models.Model):
@@ -41,10 +42,15 @@ class Animal(models.Model):
 class Rating(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
+    category = models.ForeignKey(Category, null=True, blank=True,
+                                 on_delete=models.SET_NULL)
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE,
                                related_name='rating',
-                               related_query_name='rating')
-    user = models.CharField(max_length=10, default="")
+                               related_query_name='rating',
+                               null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+                             null=True,
+                             )
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
     rating_out_of_five = models.IntegerField(default=0)

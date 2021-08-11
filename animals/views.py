@@ -165,10 +165,11 @@ def delete_animal(request, animal_id):
 def add_review(request, animal_id):
     """ Add a review to an animal """
     animal = get_object_or_404(Animal, pk=animal_id)
-
     if request.method == 'POST':
         form = ReviewForm(request.POST, request.FILES)
         if form.is_valid():
+            form = form.save(commit=False)
+            form.user = request.user
             form.save()
             messages.success(request, 'Successfully added reveiw!')
             return redirect(reverse('animal_details', args=[animal.id]))
