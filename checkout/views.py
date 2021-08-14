@@ -53,9 +53,9 @@ def checkout(request):
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
-            order.original_bag = json.dumps(bag)
+            order.original_cart = json.dumps(cart)
             order.save()
-            for item_id, item_data in bag.items():
+            for item_id, item_data in cart.items():
                 try:
                     animal = Animal.objects.get(id=item_id)
                     if isinstance(item_data, int):
@@ -69,7 +69,7 @@ def checkout(request):
                         order_line_item.save()
                 except Animal.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your bag wasn't found in our database. "
+                        "One of the products in your cart wasn't found in our database. "
                         "Please call us for assistance!")
                     )
                     order.delete()
