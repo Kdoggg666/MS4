@@ -121,24 +121,24 @@ WSGI_APPLICATION = 'GbgZoo.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-# if 'DATABASE_URL' not in os.environ:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#         }
-#     }
-# else:
-#     DATABASES = {
-#         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-#     }
+if 'DATABASE_URL' not in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
     
 
 
 
-DATABASES = {
-    'default': dj_database_url.parse('postgres://pgqnxbaadwvvle:08d453a7b6e2a494a0249e00acafd20eb261cdc8dfb75a1dbeb28bb1f3c8d6a3@ec2-52-208-221-89.eu-west-1.compute.amazonaws.com:5432/d36qajpr3n3m4f')
-}
+# DATABASES = {
+#     'default': dj_database_url.parse('#')
+# }
 
 # DATABASES = {
 #     'default': {
