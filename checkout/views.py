@@ -168,4 +168,6 @@ def checkout_success(request, order_number):
         'order': order,
     }
 
+    print(order.grand_total)
+
     return render(request, template, context)

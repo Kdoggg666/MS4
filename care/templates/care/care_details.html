@@ -12,7 +12,11 @@
     <div class="row">
         <div class="col">
             <div class="div text-white text-center animal-details-section box-shadow">
-                <img class="animal-details-image" src="{{ animal.image_url }}" alt="{{ animal.name }}">
+                {% if animal.image_url %}
+                        <img src="{{ animal.image_url }}" alt="{{ animal.name }}">
+                    {% else %}
+                        <img src="https://res.cloudinary.com/dyxe4g62g/image/upload/v1628947987/images/albums/MS4/no-image_pbaf3y.png" alt="{{ animal.name }}">
+                    {% endif %}
                 <h2>{{ animal.name|title }}</h1>
                 <h5>(<em>{{ animal.latin_name }}</em>)</h5>
                 <h3 class="underline left">General Care:</h3>

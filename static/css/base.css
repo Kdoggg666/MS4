@@ -27,6 +27,8 @@ header {
     color: rgba(251, 255, 41, 0.9)
 }
 
+
+
 /*-- Navbar --*/
 .navbar {
     height: 150px;
@@ -323,3 +325,4 @@ label {
 .btn {
     margin: auto 3px auto 3px;
 }
+
