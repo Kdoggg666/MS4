@@ -16,9 +16,7 @@ class ReviewForm(forms.ModelForm):
 
     class Meta:
         model = Rating
-        fields = ['title', 'content', 'rating_out_of_five', 'animal',
-                  'category'
-                  ]
+        fields = ['title', 'content', 'rating_out_of_five', 'animal']
         labels = {
             'title': 'Review Name',
             'content': 'Write your review here',
