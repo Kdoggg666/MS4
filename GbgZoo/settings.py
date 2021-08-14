@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'crispy_forms',  # Crispy forms to render forms easily
     'cart',  # my custom shopping cart app
     'care',  # my custom care app
+    'profiles',  # my custom profile app
+    'checkout',  # my custom profile app
 ]
 
 MIDDLEWARE = [

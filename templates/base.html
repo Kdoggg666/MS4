@@ -91,7 +91,7 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a href="#" class="nav-link hvr-grow">My Profile</a>
+                        <a href="{% url 'profile' %}" class="nav-link hvr-grow">My Profile</a>
                     </li>
                     <li class="nav-item">
                         <a href="{% url 'account_logout' %}" class="nav-link hvr-grow">Logout</a>
