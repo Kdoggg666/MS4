@@ -15,54 +15,22 @@ def all_animals_care(request):
     """
     animals = Animal.objects.all()
     care = Care.objects.all()
-    query = None
     categories = None
-    sort = None
-    direction = None
 
     if request.GET:
-        if 'sort' in request.GET:
-            sortkey = request.GET['sort']
-            sort = sortkey
-            if sortkey == 'name':
-                sortkey = 'lower_name'
-                animals = animals.annotate(lower_name=Lower('name'))
-            if sortkey == 'category':
-                sortkey = 'category__name'
-            if 'direction' in request.GET:
-                direction = request.GET['direction']
-                if direction == 'desc':
-                    sortkey = f'-{sortkey}'
-            animals = animals.order_by(sortkey)
-
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             animals = animals.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
-
-        if 'q' in request.GET:
-            query = request.GET['q']
-            if not query:
-                messages.error(request, "You didn't enter any search criteria!")
-                return redirect(reverse('animals'))
-
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
-            animals = animals.filter(queries)
-    objects_list = list(zip(animals, care))
-    current_sorting = f'{sort}_{direction}'
     #  Pagination from Django docs.
-    paginator = Paginator(objects_list, 6)  # Show 6 results per page.
+    paginator = Paginator(animals, 6)  # Show 6 results per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-
     context = {
         'animals': animals,
-        'search_term': query,
         'current_categories': categories,
-        'current_sorting': current_sorting,
-        'page_obj': page_obj,
         'care': care,
-        'objects_list': objects_list,
+        'page_obj': page_obj,
     }
 
     return render(request, 'care/care.html', context)
@@ -72,9 +40,12 @@ def animal_care(request, animal_id):
     """
     View for Animal Care.
     """
+    try:
+        care = Care.objects.get(pk=animal_id)
+    except Care.DoesNotExist:
+        care = Care.objects.all()
+        messages.error(request, 'Sorry, this animal has no care guide yet.')
     animal = get_object_or_404(Animal, pk=animal_id)
-    care = get_object_or_404(Care, pk=animal_id)
-
     context = {
         'animal': animal,
         'care': care,
