@@ -1,0 +1,19 @@
+[{
+    "model": "animals.category",
+    "pk": 1,
+    "fields": {
+        "name": "snakes"
+    }
+}, {
+    "model": "animals.category",
+    "pk": 2,
+    "fields": {
+        "name": "lizards"
+    }
+}, {
+    "model": "animals.category",
+    "pk": 3,
+    "fields": {
+        "name": "amphibians"
+    }
+}]

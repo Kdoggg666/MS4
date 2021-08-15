@@ -24,8 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-
-DEBUG = 'DEVELOPMENT' in os.environ
+if 'DEVELOPMENT' in os.environ is True:
+    DEBUG = True
+elif 'DEVELOPMENT' in os.environ is False:
+    DEBUG = False
 
 ALLOWED_HOSTS = ['gbgzoo.herokuapp.com', 'localhost']
 

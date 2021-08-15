@@ -1,22 +1,4 @@
 [{
-    "model": "animals.category",
-    "pk": 1,
-    "fields": {
-        "name": "snakes"
-    }
-}, {
-    "model": "animals.category",
-    "pk": 2,
-    "fields": {
-        "name": "lizards"
-    }
-}, {
-    "model": "animals.category",
-    "pk": 3,
-    "fields": {
-        "name": "amphibians"
-    }
-}, {
     "model": "animals.animal",
     "pk": 1,
     "fields": {
@@ -288,18 +270,5 @@
         "price": "999.99",
         "image_url": "https://res.cloudinary.com/dyxe4g62g/image/upload/v1626535496/images/albums/MS4/animals/crested-gecko-adult_givr0g.jpg",
         "temperature": "25"
-    }
-}, {
-    "model": "animals.rating",
-    "pk": 5,
-    "fields": {
-        "title": "Best pet snake ever!",
-        "content": "Easy to care for, very docile. Highly recommend!",
-        "category": null,
-        "animal": 1,
-        "user": 2,
-        "created": "2021-08-14",
-        "updated": "2021-08-14",
-        "rating_out_of_five": 5
     }
 }]
