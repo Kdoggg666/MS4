@@ -41,7 +41,7 @@
                 <div class="row">
                     <div class="col-12">
                         <p>{{ animal.description }}</p>
-                            {% if animal.animal|lower == care.name|lower %}
+                            {% if animal.id == care.id %}
                                 <a href="{% url 'animal_care' animal.id %}"
                                 class="btn btn-lg btn-warning hvr-grow">{{ animal.name|title }} Care Guide</a>
                             {% endif %}    

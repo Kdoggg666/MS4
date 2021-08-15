@@ -1,7 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
-from django.db.models import Q
-from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from animals.models import Animal, Category
@@ -11,7 +9,7 @@ from .forms import CareForm
 
 def all_animals_care(request):
     """
-    A view to show all animal care guides, including sorting and search queries
+    A view to show all animal care guides
     """
     animals = Animal.objects.all()
     care = Care.objects.all()
