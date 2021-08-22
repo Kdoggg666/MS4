@@ -32,7 +32,7 @@ A live preview of the website can be found [Here](https://gbgzoo.herokuapp.com/)
 
 ### Site Goals
 
-The goal of GbgZoo.se is to offer a large selection of reptiels and amphibians for users to purchase as well as provide them with detailed care information. It is also the goal to make it easy for users to check their past orders and update their information easily. The site should be easy to navigate as well as aesthetically pleasing. Administrators should be able to easily add products and care guides.  
+The goal of GbgZoo.se is to offer a large selection of reptiles and amphibians for users to purchase as well as provide them with detailed care information. It is also the goal to make it easy for users to check their past orders and update their information easily. The site should be easy to navigate as well as aesthetically pleasing. Administrators should be able to easily add products and care guides.  
  
 ### User Stories
 #### As a Shopper: 
@@ -77,19 +77,19 @@ To see the full relational database structure [Click Here!](/database_structure.
 - The search bar allows users to search easily for animals and care guides.
  
   
-![Home page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629635077/images/albums/MS4/features%20images/home_page_gkivow.png "Home Page")
+![Home page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629647886/images/albums/MS4/features%20images/home_page_fwngrr.png "Home Page" )
 
 ### All Animals Page
 - Animals are dynamically generated from the relational database and displayed in groups of 6 entries using pagination.
 - Buttons on the page allow the user to sort results by Snakes, Lizards, Amphibians or all animals.  
 
-![All Animals Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629635321/images/albums/MS4/features%20images/all_animals_page_mhmby8.png "All Animals Page")
+![All Animals Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629647955/images/albums/MS4/features%20images/all_animals_page_utboxb.png "All Animals Page")
 
 ### Care Guides Page
 - Animals are dynamically generated from the relational database and displayed in groups of 6 entries using pagination just the same as the all animals page.
 - Clicking on an animal will take you to the care guide for the specific animal.  
 
-![Care Guides Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629635321/images/albums/MS4/features%20images/all_animals_page_mhmby8.png "Care Guides Page")
+![Care Guides Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629647955/images/albums/MS4/features%20images/all_animals_page_utboxb.png "Care Guides Page")
 
 ### Animal Details Page
 - Animals details are dynamically generated from the relational database and displayed to the user in an easy to read layout.
