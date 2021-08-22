@@ -215,3 +215,16 @@ def edit_review(request, animal_id, review_id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_review(request, animal_id, review_id):
+    """ Delete an animal """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store admins can do that.')
+        return redirect(reverse('home'))
+
+    review = get_object_or_404(Rating, pk=review_id)
+    review.delete()
+    messages.success(request, 'Review deleted!')
+    return redirect(reverse('animals'))

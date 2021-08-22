@@ -149,8 +149,13 @@
                 </h5>
                 <p>{{ rating.content }}</p>
                 <br>
-                <a class="btn btn-lg btn-warning hvr-grow" href="">Delete Review</a>
-                <a class="btn btn-lg btn-warning hvr-grow" href="{% url 'edit_review' animal_id=animal.id review_id=rating.id%}">{{ animal.id}} / {{ rating.id }} Edit Review</a>
+                {% if rating.user|lower == user.get_username|lower %}
+                    <a class="btn btn-lg btn-warning hvr-grow" href="{% url 'edit_review' animal_id=animal.id review_id=rating.id%}">Edit Review</a>
+                    <a class="btn btn-lg btn-warning hvr-grow" href="{% url 'delete_review' animal_id=animal.id review_id=rating.id%}">Delete Review</a>
+                {% elif user.is_superuser %}    
+                    <a class="btn btn-lg btn-warning hvr-grow" href="{% url 'delete_review' animal_id=animal.id review_id=rating.id%}">Delete Review</a>
+                    <a class="btn btn-lg btn-warning hvr-grow" href="{% url 'edit_review' animal_id=animal.id review_id=rating.id%}">Edit Review</a>
+                {% endif %}    
             </div>
             {% endif %}
             {% endfor %}
