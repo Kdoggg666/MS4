@@ -184,6 +184,7 @@ To see the full relational database structure [Click Here!](/database_structure.
 - Model and page for animal care products. 
 - Option to select home delivery or collect in store. 
 - Custom error screens such as 500, 404 etc. Django defaults are currently being used. 
+- Remove unused fields in models, Ive had many issues with migration so I didn't want to mess with that so close to submission as it works currently and don't have time to fix if an issue crops up.
 
 <a name="technologies"></a>
 ## Technologies Used
@@ -217,3 +218,9 @@ To see the full relational database structure [Click Here!](/database_structure.
 ## Testing
 
 The testing section of the README can be found [Here](testing.md)
+
+<a name="deploy"></a>
+## Deployment
+GbgZoo.se was deployed to [Heroku](https://www.heroku.com/)
+
+The deployment section of the README can be found [Here](deploy.md)

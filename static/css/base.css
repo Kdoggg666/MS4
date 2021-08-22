@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
 
 html {
-    background: url(https://www.popsci.com/uploads/2019/03/18/MAWBLTWLVA5IIBN34YJYSH2L5A.jpg) no-repeat center center fixed;
+    background: url(https://res.cloudinary.com/dyxe4g62g/image/upload/v1629645711/images/albums/MS4/website_background_nfe1kb.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;    
     -o-background-size: cover;      
@@ -273,7 +273,7 @@ label {
     display: inline-block;
     height: 100%;
     vertical-align: middle;
-    margin-right: -4px; /* Adjusts for spacing */
+    margin-right: -4px;
   }
   
   .modal-dialog {
