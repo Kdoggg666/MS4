@@ -10,19 +10,21 @@ A live preview of the website can be found [Here](https://gbgzoo.herokuapp.com/)
 
 2. [Wireframes](#wireframes)
 
-3. [Features](#features)
+3. [Database](#db)
 
-4. [Technologies Used](#technologies)
+4. [Features](#features)
 
-5. [Testing](#testing)
+5. [Technologies Used](#technologies)
 
-6. [Deployment](#deploy)
+6. [Testing](#testing)
 
-7. [Credits](#credits)
+7. [Deployment](#deploy)
 
-8. [Acknowledgements](#acknowledgements)
+8. [Credits](#credits)
 
-9. [Disclaimer](#disclaimer)
+9. [Acknowledgements](#acknowledgements)
+
+10. [Disclaimer](#disclaimer)
 
 
 <a name="ux"></a> 
@@ -59,8 +61,159 @@ The goal of GbgZoo.se is to offer a large selection of reptiels and amphibians f
 
 To see all wireframes created in the UX stage [Click Here!](/wireframes.md)
 
-
+<a name="db"></a>
 ### Database Overview
 For this project I have used Sqlite in production and postgres for the deployed version.
 
 #### Database structure
+To see the full relational database structure [Click Here!](/database_structure.md)
+
+<a name="features"></a>
+## Features
+
+### Home Page
+- The home page displays a large image with two articles directing the user to the animal selection as well as the care guide selection. 
+- The footer shows information about the business as well as links to follow the store on social media. 
+- The search bar allows users to search easily for animals and care guides.
+ 
+  
+![Home page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629635077/images/albums/MS4/features%20images/home_page_gkivow.png "Home Page")
+
+### All Animals Page
+- Animals are dynamically generated from the relational database and displayed in groups of 6 entries using pagination.
+- Buttons on the page allow the user to sort results by Snakes, Lizards, Amphibians or all animals.  
+
+![All Animals Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629635321/images/albums/MS4/features%20images/all_animals_page_mhmby8.png "All Animals Page")
+
+### Care Guides Page
+- Animals are dynamically generated from the relational database and displayed in groups of 6 entries using pagination just the same as the all animals page.
+- Clicking on an animal will take you to the care guide for the specific animal.  
+
+![Care Guides Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629635321/images/albums/MS4/features%20images/all_animals_page_mhmby8.png "Care Guides Page")
+
+### Animal Details Page
+- Animals details are dynamically generated from the relational database and displayed to the user in an easy to read layout.
+- On this page the user can select the quantity of animal and add it to the cart.
+- Users can access the care guide for the specific animal if there is a care guide for that animal. If there is no care guide the user will not see a button for the guide.
+- Users will see reviews for the selected animal on the bottom of the page. If no review exists the user will not see the review section. Users may only edit and delete reviews that they have created. Suerusers can delete and edit any reviews.
+- Users can click "Review this animal to leave a review on the selected animal"
+- Super users will see a button to edit the animal and delete the animal. Regular users will not see this option. 
+- Once a user adds to the cart or leaves a review they will recieve a toast message showing information relating to their actions.   
+
+![Animal Details Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629635819/images/albums/MS4/features%20images/animal_details_page_jfcewj.png "Animal Details Page")
+
+### Care Details Page
+- Care details are dynamically generated from the relational database and displayed to the user in an easy to read layout.
+- The user is provided with detailed care information on the selected animal as well as a link to an external article.
+- Users will also have the option to see the animal in the online store.
+- Super users will see a button to edit and delete the care guide. 
+   
+![Care Details Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629636023/images/albums/MS4/features%20images/care_details_kzmn6z.png "Care Details Page")
+
+### Shopping Cart Page
+- The shopping cart page displays which animals the user has added to their cart and allows them to change the quantity or remove items while displaying a running total of the price.
+- Users can either proceed to secure checkout or go back to the online store. 
+- Whenever a user adds a product to their cart the shopping cart icon in the upper right hand side of the nav bar will display the running total in Swedish Krona. 
+
+![Shopping Cart Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629636154/images/albums/MS4/features%20images/shopping_cart_jcczhc.png "Shopping Cart Page")
+
+### Secure Checkout Page
+- The secure checkout page shows a summary of the customers order as well as a form to fill in customer details and shipping information. 
+- The user has the option to login or create an account in order to save order information as well as customer details for easy checkout. 
+- The user has a check box asking to save delivery information to their profile. 
+- The user is shown a payment area to add their credit card information using stripe securely. 
+- once all information is added the user can click checkout and the order will be completed. The user will be notified via toast message that the order is successfull and will receieve an email confirmation. 
+- after checkout the customer will be redirected to a checkout confirmation page with the order summary.
+
+![Secure Checkout Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629636397/images/albums/MS4/features%20images/secure_checkout_aelsux.png "Secure Checkout Page")
+
+### Checkout Confirmation Page
+- The checkout confirmation page shows a summary of the customers order as well as confirmation that the order was processed. 
+
+![Checkout Confirmation Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629640844/images/albums/MS4/features%20images/checkout_confiim_yrsap6.png "Checkout Confirmation Page")
+
+### Login Page
+- The login page requires a users name and password. A user can also register from here if they do not have an account.
+
+![Login Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629641010/images/albums/MS4/features%20images/login_gnthpo.png "Login Page")
+
+### Registration Page
+- The signup page will allow a user to register a profile by filling in the required fields. The backend is handled by allauth. 
+
+![Login Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629641108/images/albums/MS4/features%20images/sign_up_hff1le.png "Login Page")
+
+### Logout Page
+- The logout page asks the user to confirm that they would like to logout and clears the user from cookies. 
+
+![Logout Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629641240/images/albums/MS4/features%20images/signout_xale1w.png "Logout Page")
+
+### Profile Page
+- The profile page shows a form prepopulated with the users information if provided as well as the option to update the information. 
+- The profile page also shows previous orders and a link to the order summary.
+
+![Profile Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629641385/images/albums/MS4/features%20images/profile_wg5eau.png "Profile Page")
+
+### Add Animal Page
+- The add animal page allows superusers the ability to add new animals via a form that is connected to the animal model. once the form is saved the animal will appear on the list of animals in the store.
+
+
+![Add Animal Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629641532/images/albums/MS4/features%20images/add_animal_a5yncn.png "Add Animal Page")
+
+### Add Care Guide Page
+- The add care guide page allows superusers the ability to add new care guides for animals via a form that is connected to the care model. Once the form is saved the care guide will appear on the list of care guides in the care guides section as well as a button on the animal details page.
+
+
+![Add Care Guide Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629641733/images/albums/MS4/features%20images/care_guide_xtge78.png "Add Care Guide Page")
+
+### Add Review Page
+- The add reveiw page is accessed by clicking review this animal on the animal details page. The user will be presented with a form to review the animal. Once the form is submitted the review will be visiable on the animal reviewed's details page to all users. Only super users and the user that created the review will be able to delete or edit reviews.
+
+
+![Add Review Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629641953/images/albums/MS4/features%20images/add_review_crzvrp.png "Add Review Page")
+
+### Admin Panel
+- The admin panel is accessed via the /admin/ url and super users can login and edit users, models and database entries.  
+-All models have been registered on the admin panel.
+
+
+![Admin Panel](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629642112/images/albums/MS4/features%20images/admin_panel_pzycyr.png "Admin Panel")
+
+### Features Left to Implement
+- Confirmation modal when deleting reviews, unfortunately I ran out of time and wasn't able to impliment this.
+- User profile picture which displays in the navbar when logged in and on user reviews. 
+- Model and page for animal care products. 
+- Option to select home delivery or collect in store. 
+- Custom error screens such as 500, 404 etc. Django defaults are currently being used. 
+
+<a name="technologies"></a>
+## Technologies Used
+ 
+- **Postgres** - Postgres was used as the DB for the live version of the site.
+- **Sqlite3** - Sqlite was used to store and access database items in development.  
+- **Django** - Used as web app framework to make creating the app faster and easier.   
+- **Heroku** - Heroku was used to host the live version of this app.  
+- **Github** - Github was used for storing my code and version control.    
+- **Gitpod** - I used Gitpod to code the site as well as push updates to Github.    
+- **Python** - Python 3 was used for the backend code to run the app and logic.    
+- **Prettier Code** - I used Beautify to keep my code properly indented and easily readable.
+- **Flake8** - I used Flake8 to keep my python code properly indented and easily readable as well as PeP8 compliant.    
+- **HTML5** - The core of the site was built with HTML version 5.  
+- **CSS** - CSS was used to style the website and define fonts and layout.  
+- **Bootstrap** - Bootstrap was used for layout and alignment with the grid system, forms and inputs as well as pagination.   
+- **JavaScript** - JavaScript was used to provide logic and funtionality to certain elements such as the running total for the checkout cart.  
+- **Jquery** - Jquery was used to write the click functions that append extra inputs to the forms as well as to enable Bootstrap selectors and sidenav.   
+- **Font Awesome** - Social Media icons from Font Awesome.  
+- **Google Chrome** - The website was built and tested in google Chrome.  
+- **Google Fonts** - Bitter, Akaya and Cormorant from Google.  
+- **Auto close tag** - self explanitory.  
+- **HTML hint** - for faster coding.  
+- **Cloudinary** - Hosting images to make the site load faster.
+- **Apple Safari** - Used for testing.  
+- **Mozilla Firefox** - Used for testing.  
+- **Opera** - Used for testing.  
+- **Amazon Web Services S3** - AWS S3 was used for the static files for deployment.
+
+<a name="testing"></a>
+## Testing
+
+The testing section of the README can be found [Here](testing.md)
