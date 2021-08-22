@@ -41,7 +41,8 @@ def all_animals(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(request, "You didn't enter \
+                               any search criteria!")
                 return redirect(reverse('animals'))
 
             queries = Q(
@@ -181,6 +182,33 @@ def add_review(request, animal_id):
         form = ReviewForm()
 
     template = 'animals/add_review.html'
+    context = {
+        'form': form,
+        'animal': animal,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def edit_review(request, animal_id, review_id):
+    """ Edit an animal """
+    animal = get_object_or_404(Animal, pk=animal_id)
+    review = get_object_or_404(Rating, pk=review_id)
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, request.FILES, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated review!')
+            return redirect(reverse('animal_details', args=[animal.id]))
+        else:
+            messages.error(request, 'Failed to update review. Please ensure \
+                           the form is valid.')
+    else:
+        form = ReviewForm(instance=review)
+        messages.info(request, f'You are editing the review for {animal.name}')
+
+    template = 'animals/edit_review.html'
     context = {
         'form': form,
         'animal': animal,
