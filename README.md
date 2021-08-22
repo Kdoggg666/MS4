@@ -224,3 +224,57 @@ The testing section of the README can be found [Here](testing.md)
 GbgZoo.se was deployed to [Heroku](https://www.heroku.com/)
 
 The deployment section of the README can be found [Here](deploy.md)
+
+<a name="credits"></a>
+## Credits
+
+### Code
+- Majority of the code was taken and modified from the Code Institute Boutique Ado walkthrough project which I relied heavily on. Other code taken and modified from the Bootstrap, Django and Python documentation. 
+
+### Content
+- Care guide text taken and modified from [Reptiles Magazine](https://www.reptilesmagazine.com/) and [Reptile Advisor](https://www.reptileadvisor.com)
+
+
+
+#### Photo Credits
+I have credited all the photos that I have used however as users can upload their own images I can not ensure that they own the rights to those images as well as I can not credit them here. 
+
+### Website
+- Favicon: https://commons.wikimedia.org/wiki/File:Snake_icon.svg  
+- Website Background: https://www.popsci.com/uploads/2019/03/18/MAWBLTWLVA5IIBN34YJYSH2L5A.jpg 
+
+### Snakes
+- Kenyan Boa - https://dubiaroaches.com/blogs/snake-care/kenyan-sand-boa-care-sheet
+- Boa Constrictor - https://www.twinkl.de/teaching-wiki/boa-constrictor
+- Ball Python - https://fineartamerica.com/featured/5-ball-python-python-regius-david-kenny.html
+- Western Hognose Snake - https://reptilehow.com/western-hognose-snake-price/
+- Garter Snake - https://sv.m.wikipedia.org/wiki/Fil:Coast_Garter_Snake.jpg
+- Burmese Python - https://www.sciencemag.org/news/2018/03/tracking-elusive-burmese-python-dna-clues-dirt
+
+### Lizards
+- Bearded Dragon - https://www.everythingreptiles.com/bearded-dragon/
+- Collared Lizard - https://tucsonherpsociety.org/amphibians-reptiles/lizards/eastern-collared-lizard/
+- Ackie Monitor - https://www.everythingreptiles.com/ackie-monitor-care-sheet/
+- Leopard Gecko - https://www.reptilecentre.com/blog/2020/02/how-to-care-for-a-leopard-gecko/
+- Frilled Dragon - https://www.reptilesmagazine.com/frilled-lizard-care-sheet/
+- Crested Gecko - https://www.reptilecentre.com/info-crested-gecko-care-sheet
+
+### Amphibians
+- Red Eyed Tree Frog - https://www.nationalgeographic.com/animals/amphibians/facts/red-eyed-tree-frog
+
+<a name="acknowledgements"></a>
+## Acknowledgements
+
+I received inspiration for this project from 
+- [The Real GBGZoo.se](https://www.gbgzoo.se)
+
+
+<a name="disclaimer"></a>
+## Disclaimer
+This project is for educational purposes only and will not be used for commercial use. All media has been credited and any similarities to other companies/websites/applications are purely unintentional.  
+
+
+
+
+
+
