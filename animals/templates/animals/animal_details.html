@@ -121,47 +121,71 @@
 
         <div class="row big-bottom-margin">
             {% for rating in ratings %}
-            {% if animal.name|lower == rating.animal|lower %}
-            <div class="col-4 text-white text-center animal-details-section box-shadow">
-                <h4 class="underline">{{ rating.title|title }}</h4>
-                <h5>Reviewed by: {{ rating.user|title }}</h5>
-                <h5>Created: {{ rating.created }}</h5>
-                <h5>Last updated: {{ rating.updated }}</h5>
-                <h5>Rating: 
-                    {% if rating.rating_out_of_five == 1 %}
-                        <i class="fas fa-star text-yellow"></i>
-                    {% elif rating.rating_out_of_five == 2 %}
-                        <i class="fas fa-star text-yellow"></i>
-                        <i class="fas fa-star text-yellow"></i>
-                    {% elif rating.rating_out_of_five == 3 %}
-                        <i class="fas fa-star text-yellow"></i>
-                        <i class="fas fa-star text-yellow"></i>
-                        <i class="fas fa-star text-yellow"></i>
-                    {% elif rating.rating_out_of_five == 4 %}
-                        <i class="fas fa-star text-yellow"></i>
-                        <i class="fas fa-star text-yellow"></i>
-                        <i class="fas fa-star text-yellow"></i>
-                        <i class="fas fa-star text-yellow"></i>
-                    {% elif rating.rating_out_of_five == 5 %}
-                        <i class="fas fa-star text-yellow"></i>
-                        <i class="fas fa-star text-yellow"></i>
-                        <i class="fas fa-star text-yellow"></i>
-                        <i class="fas fa-star text-yellow"></i>
-                    {% else %}
-                        This Product has no star ratings.
-                    {% endif %}        
-                </h5>
-                <p>{{ rating.content }}</p>
-                <br>
-                {% if rating.user|lower == user.get_username|lower %}
-                    <a class="btn btn-lg btn-warning hvr-grow" href="{% url 'edit_review' animal_id=animal.id review_id=rating.id%}">Edit Review</a>
-                    <a class="btn btn-lg btn-warning hvr-grow" href="{% url 'delete_review' animal_id=animal.id review_id=rating.id%}">Delete Review</a>
-                {% elif user.is_superuser %}    
-                    <a class="btn btn-lg btn-warning hvr-grow" href="{% url 'delete_review' animal_id=animal.id review_id=rating.id%}">Delete Review</a>
-                    <a class="btn btn-lg btn-warning hvr-grow" href="{% url 'edit_review' animal_id=animal.id review_id=rating.id%}">Edit Review</a>
-                {% endif %}    
-            </div>
-            {% endif %}
+                {% if animal.name|lower == rating.animal|lower %}
+                    <div class="col-4 text-white text-center animal-details-section box-shadow">
+                        <h4 class="underline">{{ rating.title|title }}</h4>
+                        <h5>Reviewed by: {{ rating.user|title }}</h5>
+                        <h5>Created: {{ rating.created }}</h5>
+                        <h5>Last updated: {{ rating.updated }}</h5>
+                        <h5>Rating: 
+                            {% if rating.rating_out_of_five == 1 %}
+                                <i class="fas fa-star text-yellow"></i>
+                            {% elif rating.rating_out_of_five == 2 %}
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                            {% elif rating.rating_out_of_five == 3 %}
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                            {% elif rating.rating_out_of_five == 4 %}
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                            {% elif rating.rating_out_of_five == 5 %}
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                            {% else %}
+                                This Product has no star ratings.
+                            {% endif %}        
+                        </h5>
+                        <h5>Rating ID: {{ rating.id }}</h5>
+                        <p>{{ rating.content }}</p>
+                        <br>
+                    {% if rating.user|lower == user.get_username|lower %}
+                        <a class="btn btn-lg btn-warning hvr-grow" href="{% url 'edit_review' animal_id=animal.id review_id=rating.id%}">Edit Review</a>
+                        <a type="button" class="btn btn-lg btn-danger hvr-grow" data-toggle="modal" 
+                                data-target="#m{{ rating.id }}">
+                                Delete Review</a>
+                    {% elif user.is_superuser %}   
+                        <a class="btn btn-lg btn-warning hvr-grow" href="{% url 'edit_review' animal_id=animal.id review_id=rating.id%}">Edit Review</a>
+                        <a type="button" class="btn btn-lg btn-danger hvr-grow" data-toggle="modal"
+                        data-target="#m{{ rating.id }}">
+                        Delete Review</a>
+                    {% endif %}    
+                </div>
+                {% endif %}
+                <!-- Confirmation Modal Reviews -->
+                    <div class="modal fade" id="m{{ rating.id }}" tabindex="-1" role="dialog" aria-labelledby="m{{ rating.id }}Label"
+                    aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content text-white text-center animal-details-section box-shadow">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="m{{ rating.id }}Label">Delete {{ animal.name|title }}?</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to permanently remove the review for {{ animal.name|title }} from GbgZoo.se? This can NOT
+                                        be undone!</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-warning hvr-grow" data-dismiss="modal">Cancel</button>
+                                    <a class="btn btn-danger hvr-grow" href="{% url 'delete_review' animal_id=animal.id review_id=rating.id %}">Delete Review</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             {% endfor %}
         {% endif %}    
 
@@ -170,7 +194,7 @@
 </div>
 
 
-<!-- Confirmation Modal -->
+<!-- Confirmation Modal Animals -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -190,6 +214,8 @@
         </div>
     </div>
 </div>
+
+
 
 {% endblock %}
 
