@@ -72,12 +72,12 @@ def animal_details(request, animal_id):
     """
     View for Animal Details with ratings.
     """
+    animal = get_object_or_404(Animal, pk=animal_id)
     try:
-        care = Care.objects.get(pk=animal_id)
+        care = Care.objects.get(animal=animal)
     except Care.DoesNotExist:
         care = Care.objects.all()
     ratings = Rating.objects.all()
-    animal = get_object_or_404(Animal, pk=animal_id)
 
     context = {
         'animal': animal,
