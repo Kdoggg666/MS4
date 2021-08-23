@@ -166,27 +166,7 @@
         "image_url": "https://res.cloudinary.com/dyxe4g62g/image/upload/v1626283804/images/albums/MS4/animals/burmese-python_zqlhxb.jpg",
         "temperature": ""
     }
-}, {
-    "model": "animals.animal",
-    "pk": 9,
-    "fields": {
-        "category": 2,
-        "sku": null,
-        "animal_id": "0008",
-        "name": "collared lizard",
-        "latin_name": "Crotaphytus collaris",
-        "country": "USA",
-        "climate": "Desert",
-        "temperament": "Docile",
-        "food": "Insects",
-        "min_tank_size": "60cm x 40cm",
-        "max_length": "30cm",
-        "lifespan": "8",
-        "description": "The collared lizard (Crotaphytus collaris) is distinguished by the two black collars around its neck. Adult males have bright green scales as well as tan, olive, brown, bluish and yellow scales. Females are less colorful than the males. Both have whitish bellies and large heads.",
-        "price": "1499.99",
-        "image_url": "https://res.cloudinary.com/dyxe4g62g/image/upload/v1626532504/images/albums/MS4/animals/Male-Eastern-Collared-Lizard_z9laf1.jpg",
-        "temperature": "35"
-    }
+}, 
 }, {
     "model": "animals.animal",
     "pk": 10,

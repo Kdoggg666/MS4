@@ -27,7 +27,7 @@
         {% for animal in page_obj %}
                 <div class="col-sm-6 image-link hvr-grow mb-4">
                     <img class="animal-details-image box-shadow" src="{{ animal.image_url }}" alt="{{ animal.name }}">
-                    <h1><a href="{% url 'animal_care' animal.id %}"><span class="centered-image-text animal-logo-image-text">{{ animal.name|title }}</span></a></h1>
+                    <h1><a href="{% url 'animal_care' animal.id  %}"><span class="centered-image-text animal-logo-image-text">{{ animal.name|title }}</span></a></h1>  
                 </div>      
         {% endfor %}
     </div>

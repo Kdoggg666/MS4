@@ -1,5 +1,4 @@
 from django import forms
-from animals.models import Animal, Category
 from .models import Care
 
 
@@ -11,16 +10,14 @@ class CareForm(forms.ModelForm):
         labels = {
                 'name': 'Animal Name',
                 'care_guide': 'General Care',
-                'cage_setup': 'Housing Requirements', 
-                'lighting': 'Lighting Requirements', 
-                'heating': 'Heating Requirements', 
+                'cage_setup': 'Housing Requirements',
+                'lighting': 'Lighting Requirements',
+                'heating': 'Heating Requirements',
                 'feeding_schedule': 'Feeding Requirements',
-                'known_problems': 'Known Health Issues', 
-                'other_information': 'Further Reading URL', 
-                'other_information_name': 'Further Reading Name', 
+                'known_problems': 'Known Health Issues',
+                'other_information': 'Further Reading URL',
+                'other_information_name': 'Further Reading Name',
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        animals = Animal.objects.all()
-        care = Care.objects.all()

@@ -191,10 +191,5 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<script type="text/javascript">
-    $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus')
-    })
-</script>
 {% include "includes/quantity_input_script.html" %}
 {% endblock %}

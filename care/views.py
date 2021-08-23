@@ -38,6 +38,7 @@ def animal_care(request, animal_id):
     """
     View for Animal Care.
     """
+    
     try:
         care = Care.objects.get(pk=animal_id)
     except Care.DoesNotExist:
@@ -61,9 +62,9 @@ def add_care(request):
     if request.method == 'POST':
         form = CareForm(request.POST, request.FILES)
         if form.is_valid():
-            animal = form.save()
+            form = form.save()
             messages.success(request, 'Successfully added Care guide!')
-            return redirect(reverse('animal_care', args=[animal.id]))
+            return redirect(reverse('all_animals_care'))
         else:
             messages.error(request,
                            'Failed to add care guide. Please ensure the form is \
@@ -94,7 +95,7 @@ def edit_care(request, animal_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully updated care guide!')
-            return redirect(reverse('animal_care', args=[animal.id]))
+            return redirect(reverse('all_animals_care'))
         else:
             messages.error(request, 'Failed to update care guide. Please ensure \
                            the form is valid.')
@@ -110,3 +111,16 @@ def edit_care(request, animal_id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_care(request, animal_id):
+    """ Delete an animal """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store admins can do that.')
+        return redirect(reverse('home'))
+
+    care = get_object_or_404(Care, pk=animal_id)
+    care.delete()
+    messages.success(request, 'Care guide deleted!')
+    return redirect(reverse('all_animals_care'))
