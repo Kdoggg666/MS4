@@ -33,6 +33,31 @@
                             <h4>Price: <em>{{ animal.price }}SEK</em></h4>
                             <h4>Diet: <em>{{ animal.food }}</em></h4>
                             <h4>Temperament: <em>{{ animal.temperament }}</em></h4>
+                            <h4>Average User Rating:
+                                {% if intstar == 1 %}
+                                    <i class="fas fa-star text-yellow"></i>
+                                {% elif intstar == 2 %}
+                                    <i class="fas fa-star text-yellow"></i>
+                                    <i class="fas fa-star text-yellow"></i>
+                                {% elif intstar == 3 %}
+                                    <i class="fas fa-star text-yellow"></i>
+                                    <i class="fas fa-star text-yellow"></i>
+                                    <i class="fas fa-star text-yellow"></i>
+                                {% elif intstar == 4 %}
+                                    <i class="fas fa-star text-yellow"></i>
+                                    <i class="fas fa-star text-yellow"></i>
+                                    <i class="fas fa-star text-yellow"></i>
+                                    <i class="fas fa-star text-yellow"></i>
+                                {% elif intstar == 5 %}
+                                    <i class="fas fa-star text-yellow"></i>
+                                    <i class="fas fa-star text-yellow"></i>
+                                    <i class="fas fa-star text-yellow"></i>
+                                    <i class="fas fa-star text-yellow"></i>
+                                    <i class="fas fa-star text-yellow"></i>
+                                {% else %}
+                                    This Product has no star ratings.
+                                {% endif %}    
+                            </h4>
                             <h4><a class="review-link hvr-grow" href="{% url 'add_review' animal.id %}">Review this Animal</a>
                             </h4>
                         </ul>
@@ -124,10 +149,11 @@
                 {% if animal.name|lower == rating.animal|lower %}
                     <div class="col-4 text-white text-center animal-details-section box-shadow">
                         <h4 class="underline">{{ rating.title|title }}</h4>
-                        <h5>Reviewed by: {{ rating.user|title }}</h5>
-                        <h5>Created: {{ rating.created }}</h5>
-                        <h5>Last updated: {{ rating.updated }}</h5>
-                        <h5>Rating: 
+                        <br>
+                        <h5 class="left">Reviewed by: {{ rating.user|title }}</h5>
+                        <h5 class="left">Created: {{ rating.created }}</h5>
+                        <h5 class="left">Last updated: {{ rating.updated }}</h5>
+                        <h5 class="left">Rating: 
                             {% if rating.rating_out_of_five == 1 %}
                                 <i class="fas fa-star text-yellow"></i>
                             {% elif rating.rating_out_of_five == 2 %}
@@ -147,21 +173,22 @@
                                 <i class="fas fa-star text-yellow"></i>
                                 <i class="fas fa-star text-yellow"></i>
                                 <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
                             {% else %}
                                 This Product has no star ratings.
                             {% endif %}        
                         </h5>
-                        <h5>Rating ID: {{ rating.id }}</h5>
+                        <br>
                         <p>{{ rating.content }}</p>
                         <br>
                     {% if rating.user|lower == user.get_username|lower %}
-                        <a class="btn btn-lg btn-warning hvr-grow" href="{% url 'edit_review' animal_id=animal.id review_id=rating.id%}">Edit Review</a>
-                        <a type="button" class="btn btn-lg btn-danger hvr-grow" data-toggle="modal" 
+                        <a class="btn btn-warning hvr-grow" href="{% url 'edit_review' animal_id=animal.id review_id=rating.id%}">Edit Review</a>
+                        <a type="button" class="btn btn-danger hvr-grow" data-toggle="modal" 
                                 data-target="#m{{ rating.id }}">
                                 Delete Review</a>
                     {% elif user.is_superuser %}   
-                        <a class="btn btn-lg btn-warning hvr-grow" href="{% url 'edit_review' animal_id=animal.id review_id=rating.id%}">Edit Review</a>
-                        <a type="button" class="btn btn-lg btn-danger hvr-grow" data-toggle="modal"
+                        <a class="btn btn-warning hvr-grow" href="{% url 'edit_review' animal_id=animal.id review_id=rating.id%}">Edit Review</a>
+                        <a type="button" class="btn btn-danger hvr-grow" data-toggle="modal"
                         data-target="#m{{ rating.id }}">
                         Delete Review</a>
                     {% endif %}    

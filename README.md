@@ -179,7 +179,6 @@ To see the full relational database structure [Click Here!](/database_structure.
 ![Admin Panel](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629642112/images/albums/MS4/features%20images/admin_panel_pzycyr.png "Admin Panel")
 
 ### Features Left to Implement
-- Confirmation modal when deleting reviews, unfortunately I ran out of time and wasn't able to impliment this.
 - User profile picture which displays in the navbar when logged in and on user reviews. 
 - Model and page for animal care products. 
 - Option to select home delivery or collect in store. 

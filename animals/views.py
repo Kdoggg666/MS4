@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import Q, Avg
 from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
@@ -10,8 +10,10 @@ from .forms import AnimalForm, ReviewForm
 
 
 def all_animals(request):
-    """ A view to show all animals, including sorting and search queries """
-
+    """
+    A view to show all animals, including sorting and search queries as
+    well as average rating and user reviews
+    """
     animals = Animal.objects.all()
     query = None
     categories = None
@@ -72,6 +74,10 @@ def animal_details(request, animal_id):
     """
     View for Animal Details with ratings.
     """
+    avg_stars = Rating.objects.all().aggregate(Avg('rating_out_of_five'))
+    for key, value in avg_stars.items():
+        intstar = int(value)
+
     animal = get_object_or_404(Animal, pk=animal_id)
     try:
         care = Care.objects.get(animal=animal)
@@ -83,6 +89,8 @@ def animal_details(request, animal_id):
         'animal': animal,
         'ratings': ratings,
         'care': care,
+        'avg_stars': avg_stars,
+        'intstar': intstar,
 
     }
     return render(request, 'animals/animal_details.html', context)
@@ -192,7 +200,7 @@ def add_review(request, animal_id):
 
 @login_required
 def edit_review(request, animal_id, review_id):
-    """ Edit an animal """
+    """ Edit a review """
     animal = get_object_or_404(Animal, pk=animal_id)
     review = get_object_or_404(Rating, pk=review_id)
     if request.method == 'POST':
@@ -219,7 +227,7 @@ def edit_review(request, animal_id, review_id):
 
 @login_required
 def delete_review(request, animal_id, review_id):
-    """ Delete an animal """
+    """ Delete a review """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store admins can do that.')
         return redirect(reverse('home'))
