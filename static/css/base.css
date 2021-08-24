@@ -4,14 +4,17 @@
 html {
     background: url(https://res.cloudinary.com/dyxe4g62g/image/upload/v1629645711/images/albums/MS4/website_background_nfe1kb.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
-    -moz-background-size: cover;    
-    -o-background-size: cover;      
-    background-size: cover;         
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding: 0;
+    margin: 0;
 }
 
 .white {
     color: #fff !important;
 }
+
 header {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -26,8 +29,6 @@ header {
     text-decoration: none;
     color: rgba(251, 255, 41, 0.9)
 }
-
-
 
 /*-- Navbar --*/
 .navbar {
@@ -52,7 +53,7 @@ header {
 .navbar-nav li {
     font-size: 25px;
     font-family: 'Otomanopee One', sans-serif;
-    
+
 }
 
 .navbar-nav>li>a {
@@ -66,6 +67,10 @@ header {
 
 .search-bar-custom {
     background-color: rgba(251, 255, 255, 0.6);
+}
+
+.no-pads {
+    padding: 0;
 }
 
 /*-- Information sections --*/
@@ -96,7 +101,7 @@ header {
     text-align: left;
 }
 
-.home-text-div{
+.home-text-div {
     width: 100%;
 }
 
@@ -137,7 +142,7 @@ footer {
     background: rgba(0, 0, 0, 0.6);
     text-align: center;
     color: greenyellow;
-  }
+}
 
 footer a i {
     font-size: 50px;
@@ -174,24 +179,24 @@ footer a i {
 }
 
 .image-link {
-    width: 400px; 
-	height: 300px; 
-	position: relative;
+    width: 400px;
+    height: 300px;
+    position: relative;
 }
 
-.image-link img { 
-	width: 100%; 
-	height: 100%; 
+.image-link img {
+    width: 100%;
+    height: 100%;
 }
 
-.image-link a { 
-	width: 100%; 
-	height: 100%; 
-	display: block; 
-	position: absolute; 
-	top: 0; 
-	left: 0; 
-} 
+.image-link a {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
 .centered-image-text {
     position: absolute;
@@ -221,26 +226,25 @@ footer a i {
 .text-yellow {
     color: yellow;
 }
-/*-- Media Queries --*/
 
+/*-- Media Queries --*/
 @media only screen and (max-width: 991px) {
-    .navbar-collapse{
+    .navbar-collapse {
         padding: 15px;
-        top:50px !important;
-        position:relative;
+        top: 50px !important;
+        position: relative;
         background-color: rgba(0, 0, 0, 0.8);
         border-radius: 15px;
         text-align: center;
         z-index: 999;
-      }
+    }
+
     .footer-info-divs {
         display: none;
     }
 }
 
-
 /*-- pagination --*/
-
 .pagination {
     font-size: 15px;
     color: greenyellow;
@@ -255,44 +259,43 @@ footer a i {
 }
 
 /*- forms -*/
-
 label {
     color: yellowgreen;
     font-size: 20px;
-    
+
 }
 
 /*-- Modal --*/
 .modal {
     text-align: center;
-    padding: 0!important;
-  }
-  
-  .modal:before {
+    padding: 0 !important;
+}
+
+.modal:before {
     content: '';
     display: inline-block;
     height: 100%;
     vertical-align: middle;
     margin-right: -4px;
-  }
-  
-  .modal-dialog {
+}
+
+.modal-dialog {
     display: inline-block;
     text-align: left;
     vertical-align: middle;
-  }
+}
 
-  .errorlist li {
+.errorlist li {
     color: white;
-  }
+}
 
-  /*-- money total nav --*/
-  .money-total {
-      font-size: 20px;
-  }
+/*-- money total nav --*/
+.money-total {
+    font-size: 20px;
+}
 
 /*-- toasts --*/
-  .message-container {
+.message-container {
     position: fixed;
     top: 175px;
     left: 20px;
@@ -329,4 +332,3 @@ label {
 .btn {
     margin: auto 3px auto 3px;
 }
-

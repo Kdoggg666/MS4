@@ -51,78 +51,81 @@
 </head>
 
 <body class="transparent">
-    <header class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand hvr-grow" href="{% url 'home' %}">GbgZoo<span class="subtext-logo">.se</span></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <header>
+        <div class="container-fluid no-pads">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand hvr-grow" href="{% url 'home' %}">GbgZoo<span class="subtext-logo">.se</span></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto flex-nowrap">
-                    <li class="nav-item">
-                        <a href="{% url 'home' %}" class="nav-link hvr-grow">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle hvr-hang" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Animals
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'animals' %}">All Animals</a>
-                            <a class="dropdown-item" href="{% url 'animals' %}?category=snakes">Snakes</a>
-                            <a class="dropdown-item" href="{% url 'animals' %}?category=lizards ">Lizards</a>
-                            <a class="dropdown-item" href="{% url 'animals' %}?category=amphibians">Amphibians</a>
-                        </div>
-                    </li>
-                    {% if user.is_superuser %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle hvr-hang" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Site Admin
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a href="{% url 'add_animal' %}" class="nav-link hvr-grow">Add Animal</a>
-                        </div>
-                    </li>
-                    {% endif %}
-                    <li class="nav-item">
-                        <a href="{% url 'all_animals_care' %}" class="nav-link hvr-grow">Care Guides</a>
-                    </li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a href="{% url 'profile' %}" class="nav-link hvr-grow">My Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{% url 'account_logout' %}" class="nav-link hvr-grow">Logout</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a href="{% url 'account_login' %}" class="nav-link hvr-grow">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{% url 'account_signup' %}" class="nav-link hvr-grow">Register</a>
-                    </li>
-                    {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'view_shopping_cart' %}">
-                            <div class="text-center">
-                                <div><i class="fas fa-shopping-cart fa-lg"></i></div>
-                                <p class="money-total">
-                                    {% if grand_total %}
-                                    {{ grand_total|floatformat:2 }}SEK
-                                    {% else %}
-                                    0.00SEK
-                                    {% endif %}
-                                </p>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto flex-nowrap">
+                        <li class="nav-item">
+                            <a href="{% url 'home' %}" class="nav-link hvr-grow">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle hvr-hang" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Animals
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{% url 'animals' %}">All Animals</a>
+                                <a class="dropdown-item" href="{% url 'animals' %}?category=snakes">Snakes</a>
+                                <a class="dropdown-item" href="{% url 'animals' %}?category=lizards ">Lizards</a>
+                                <a class="dropdown-item" href="{% url 'animals' %}?category=amphibians">Amphibians</a>
                             </div>
-                        </a>
-                    </li>
-                </ul>
+                        </li>
+                        {% if user.is_superuser %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle hvr-hang" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Site Admin
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a href="{% url 'add_animal' %}" class="nav-link hvr-grow">Add Animal</a>
+                            </div>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a href="{% url 'all_animals_care' %}" class="nav-link hvr-grow">Care Guides</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a href="{% url 'profile' %}" class="nav-link hvr-grow">My Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'account_logout' %}" class="nav-link hvr-grow">Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a href="{% url 'account_login' %}" class="nav-link hvr-grow">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'account_signup' %}" class="nav-link hvr-grow">Register</a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'view_shopping_cart' %}">
+                                <div class="text-center">
+                                    <div><i class="fas fa-shopping-cart fa-lg"></i></div>
+                                    <p class="money-total">
+                                        {% if grand_total %}
+                                        {{ grand_total|floatformat:2 }}SEK
+                                        {% else %}
+                                        0.00SEK
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
 
-            </div>
-        </nav>
+                </div>
+            </nav>
+        </div>
     </header>
 
     <!-- Toasts -->

@@ -99,8 +99,9 @@ To see the full relational database structure [Click Here!](/database_structure.
 - Users can click "Review this animal to leave a review on the selected animal"
 - Super users will see a button to edit the animal and delete the animal. Regular users will not see this option. 
 - Once a user adds to the cart or leaves a review they will recieve a toast message showing information relating to their actions.   
+- Users can also see the average rating by other users on the specific animal page. 
 
-![Animal Details Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629635819/images/albums/MS4/features%20images/animal_details_page_jfcewj.png "Animal Details Page")
+![Animal Details Page](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629807406/images/albums/MS4/features%20images/animal_details_page_fksfk0.png "Animal Details Page")
 
 ### Care Details Page
 - Care details are dynamically generated from the relational database and displayed to the user in an easy to read layout.
@@ -173,7 +174,7 @@ To see the full relational database structure [Click Here!](/database_structure.
 
 ### Admin Panel
 - The admin panel is accessed via the /admin/ url and super users can login and edit users, models and database entries.  
--All models have been registered on the admin panel.
+- All models have been registered on the admin panel.
 
 
 ![Admin Panel](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629642112/images/albums/MS4/features%20images/admin_panel_pzycyr.png "Admin Panel")
