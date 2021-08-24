@@ -193,3 +193,116 @@ I recieve an email with a link to reset my password and was able to change it.
 <img src="https://res.cloudinary.com/dyxe4g62g/image/upload/v1629812372/images/albums/MS4/testing/password_reset_iohtfn.png" width="650"/>
 
 <img src="https://res.cloudinary.com/dyxe4g62g/image/upload/v1629812372/images/albums/MS4/testing/change_password_qu7usf.png" width="650"/>
+
+## Testing user stories as the site Administrator:
+## User Story 1
+- I want to be able to add new animals.
+
+### Action
+Clicking add animal on the site admin tab on the nav bar.
+
+### Expectation
+I will be taken to a form where I can add the animal, after I have submited the animal will be available on the site. 
+
+### Result
+I am taken to the add animal form where I added the animal, after I submited the animal was available on the site. 
+
+<img src="https://res.cloudinary.com/dyxe4g62g/image/upload/v1629812818/images/albums/MS4/testing/add_animal_yqtyfp.png" width="650"/>
+
+<img src="https://res.cloudinary.com/dyxe4g62g/image/upload/v1629812820/images/albums/MS4/testing/ball_python_u77xr9.png" width="650"/>
+
+## User Story 2
+- I want to edit existing animals.
+
+### Action
+Clicking edit animal on the animal details page
+
+### Expectation
+I will be taken to a form where I can edit the animal, after I have submited the edited animal will be available on the site. 
+
+### Result
+I am taken to the edit animal form where I then edited the animal, after I submited the animal was available on the site. 
+
+<img src="https://res.cloudinary.com/dyxe4g62g/image/upload/v1629812994/images/albums/MS4/testing/edit_ballpythonbutton_c9rf3w.png" width="650"/>
+
+<img src="https://res.cloudinary.com/dyxe4g62g/image/upload/v1629812995/images/albums/MS4/testing/edit_form_jmpoyl.png" width="650"/>
+
+## User Story 3
+- I want to be able to add new care guides.
+
+### Action
+Click "Add care guide" on animals that do not have a care guide.
+
+### Expectation
+I will be able to add a care guide for an animal which will then be available on the site after submitting.
+
+### Result
+I am able to add a care guide for an animal which is now available on the site after submitting.
+
+<img src="https://res.cloudinary.com/dyxe4g62g/image/upload/v1629813235/images/albums/MS4/testing/add_care_guide_zk1hfz.png" width="650"/>
+
+<img src="https://res.cloudinary.com/dyxe4g62g/image/upload/v1629813234/images/albums/MS4/testing/add_care_form_opdjek.png" width="650"/>
+
+<img src="https://res.cloudinary.com/dyxe4g62g/image/upload/v1629813327/images/albums/MS4/testing/success_care_guide_ok32hi.png" width="650"/>
+
+## User Story 4
+- I want to edit existing care guides.
+
+### Action
+Clicking "Edit Care Guide" on the animal care details page.
+
+### Expectation
+I will be able to edit a care guide for an animal which will then be available in its edited version on the site after submitting.
+
+### Result
+I am able to edit a care guide for an animal which is now available in its edited version on the site after submitting.
+
+<img src="https://res.cloudinary.com/dyxe4g62g/image/upload/v1629813528/images/albums/MS4/testing/edit_care_guide_button_ccplo0.png" width="650"/>
+
+<img src="https://res.cloudinary.com/dyxe4g62g/image/upload/v1629813528/images/albums/MS4/testing/edit_care_guide_lvwvno.png" width="650"/>
+
+<img src="https://res.cloudinary.com/dyxe4g62g/image/upload/v1629813527/images/albums/MS4/testing/edit_care_success_whjabl.png" width="650"/>
+
+## User Story 5
+- I want to be able to remove reviews if need be.
+
+### Action
+Clicking delete on a review.
+
+### Expectation
+I will be prompted with a confirmation modal to ensure I want to delete the review. Once deleted the review will no longer be available on the site.
+
+### Result
+I am prompted with a confirmation modal to ensure I want to delete the review. Once deleted the review was no longer available on the site.
+
+<img src="https://res.cloudinary.com/dyxe4g62g/image/upload/v1629813804/images/albums/MS4/testing/delete_review_button_fohgey.png" width="650"/>
+
+<img src="https://res.cloudinary.com/dyxe4g62g/image/upload/v1629813804/images/albums/MS4/testing/delete_review_modal_fbh0dh.png" width="650"/>
+
+<img src="https://res.cloudinary.com/dyxe4g62g/image/upload/v1629813804/images/albums/MS4/testing/review_delete_success_c85dzi.png" width="650"/>
+
+## Code Validation
+### HTML
+GbgZoo validated HTML with only 2 warnings about type="text/javascript" not being needed.  
+[W3C Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fgbgzoo.herokuapp.com%2F)
+![HTML Validation](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629813998/images/albums/MS4/validation/html_kkxcfl.png)
+
+
+### CSS
+My CSS file validated without any errors on the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/validator)
+![CSS Validation](https://res.cloudinary.com/dyxe4g62g/image/upload/v1629814177/images/albums/MS4/validation/css_hawlck.png)
+
+
+### PEP8 Compliance
+My Site passed PEP8 compliance at [PEP8 Checker](http://pep8online.com/checkresult)
+![PEP8 Validation]()
+
+### JSHint Validation
+As the only javascript in this project is from bootstrap, stripe and the boutique ado walkthrough project I didnt think validation was neccessary. 
+ 
+## Known Bugs
+I unfortunately ran out of time to fix the remaining bugs, however they do not break any functionality or cause a bad user experience in my opinion.  
+- The star rating average which displays stars based on the reviews by customers shows the average stars of all reviews and not specific to the animal in question. I ran out of time and could not fix this by the submission deadline.
+- There is a bug with my DB settings where it will not see the if statement relating to which DB to use. Everytime I open my workspace I need to run the command "unset DATABASES_URL" even though there is no enviroment variable in my development environment.
+- 
+- 
