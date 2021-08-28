@@ -296,7 +296,7 @@ My CSS file validated without any errors on the [W3C CSS Validation Service](htt
 ### PEP8 Compliance
 I refactored the code as much as I could in the files I have worked on, there are a few line too long errors that I was unable to get working without breaking functionality. I also decided not to mess with any of the django migration files as to not risk damaging my database and models. 
 
-I used ```python3 -m flake8``` to show a list of errors and worked my way through fixing what was possible without negitively affecting functionality. 
+I used ```python3 -m flake8``` to show a list of errors and worked my way through fixing what was possible without negitively affecting functionality. I also tried to refcator the webhook handlers however this caused severe breaks in functionality and decided to leave this be as its working. 
 
 ### JSHint Validation
 As the only javascript in this project is from bootstrap, stripe and the boutique ado walkthrough project I didnt think validation was neccessary. 
