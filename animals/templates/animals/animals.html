@@ -30,7 +30,7 @@
                 <img class="animal-details-image box-shadow" src="{{ animal.image_url }}" alt="{{ animal.name }}">
                 <h1><a href="{% url 'animal_details' animal.id %}"><span class="centered-image-text animal-logo-image-text">{{ animal.name|title }}</span></a></h1>
             </div>
-            {% endfor %}    
+        {% endfor %}    
     </div>
     <!-- Pagination -->
     <div class="row justify-content-center">
@@ -50,4 +50,3 @@
     </div>
 </div>
 {% endblock %}
-
