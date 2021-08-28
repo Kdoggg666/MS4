@@ -294,15 +294,21 @@ My CSS file validated without any errors on the [W3C CSS Validation Service](htt
 
 
 ### PEP8 Compliance
-My Site passed PEP8 compliance at [PEP8 Checker](http://pep8online.com/checkresult)
-![PEP8 Validation]()
+I refactored the code as much as I could in the files I have worked on, there are a few line too long errors that I was unable to get working without breaking functionality. I also decided not to mess with any of the django migration files as to not risk damaging my database and models. 
+
+I used ```python3 -m flake8``` to show a list of errors and worked my way through fixing what was possible without negitively affecting functionality. 
 
 ### JSHint Validation
 As the only javascript in this project is from bootstrap, stripe and the boutique ado walkthrough project I didnt think validation was neccessary. 
- 
+
+
+### GTMetrix Test
+[GTMetrix](https://gtmetrix.com/reports/gbgzoo.herokuapp.com/8tQtIiLB/) was used to test the speed of the site which was given the grade of C.
+![GTMetrix Results](https://res.cloudinary.com/dyxe4g62g/image/upload/v1630141559/images/albums/MS4/validation/gtmetrix_fa4kjg.png)
+
 ## Known Bugs
 I unfortunately ran out of time to fix the remaining bugs, however they do not break any functionality or cause a bad user experience in my opinion.  
 - The star rating average which displays stars based on the reviews by customers shows the average stars of all reviews and not specific to the animal in question. I ran out of time and could not fix this by the submission deadline.
 - There is a bug with my DB settings where it will not see the if statement relating to which DB to use. Everytime I open my workspace I need to run the command "unset DATABASES_URL" even though there is no enviroment variable in my development environment.
-- 
+- I couldn't get the allauth forms to render as crispy forms, I did not have time to get this working unfortunately.
 - 

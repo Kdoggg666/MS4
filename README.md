@@ -229,7 +229,7 @@ The deployment section of the README can be found [Here](deploy.md)
 ## Credits
 
 ### Code
-- Majority of the code was taken and modified from the Code Institute Boutique Ado walkthrough project which I relied heavily on. Other code taken and modified from the Bootstrap, Django and Python documentation. 
+- The Code Institute Boutique Ado walkthrough project was used as a reference for this project. Other code taken and modified from the Bootstrap, Django and Python documentation. 
 
 ### Content
 - Care guide text taken and modified from [Reptiles Magazine](https://www.reptilesmagazine.com/) and [Reptile Advisor](https://www.reptileadvisor.com)
