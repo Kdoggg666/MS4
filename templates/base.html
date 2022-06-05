@@ -47,14 +47,14 @@
     {% block extra_js %}
     {% endblock %}
 
-    <title>GbgZoo {% block extra_title %}{% endblock %}</title>
+    <title>Zoodjur {% block extra_title %}{% endblock %}</title>
 </head>
 
 <body class="transparent">
     <header>
         <div class="container-fluid no-pads">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand hvr-grow" href="{% url 'home' %}">GbgZoo<span class="subtext-logo">.se</span></a>
+                <a class="navbar-brand hvr-grow" href="{% url 'home' %}">Zoodjur<span class="subtext-logo">.se</span></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -64,18 +64,22 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto flex-nowrap">
                         <li class="nav-item">
-                            <a href="{% url 'home' %}" class="nav-link hvr-grow">Home</a>
+                            <a href="{% url 'home' %}" class="nav-link hvr-grow">Hem</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle hvr-hang" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Animals
+                                Sortiment
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{% url 'animals' %}">All Animals</a>
-                                <a class="dropdown-item" href="{% url 'animals' %}?category=snakes">Snakes</a>
-                                <a class="dropdown-item" href="{% url 'animals' %}?category=lizards ">Lizards</a>
-                                <a class="dropdown-item" href="{% url 'animals' %}?category=amphibians">Amphibians</a>
+                                <a class="dropdown-item" href="{% url 'animals' %}">Alla djur</a>
+                                <a class="dropdown-item" href="{% url 'animals' %}?category=snakes">Ormar</a>
+                                <a class="dropdown-item" href="{% url 'animals' %}?category=lizards ">Ödlor</a>
+                                <a class="dropdown-item" href="{% url 'animals' %}?category=amphibians">Groddjur</a>
+                                <a class="dropdown-item" href="{% url 'animals' %}?category=rodents">Gnagare</a>
+                                <a class="dropdown-item" href="{% url 'animals' %}?category=birds">Fåglar</a>
+                                <a class="dropdown-item" href="{% url 'animals' %}?category=spiders">Spindlar</a>
+                                <a class="dropdown-item" href="{% url 'animals' %}?category=insects">Insekter</a>
                             </div>
                         </li>
                         {% if user.is_superuser %}
@@ -90,11 +94,11 @@
                         </li>
                         {% endif %}
                         <li class="nav-item">
-                            <a href="{% url 'all_animals_care' %}" class="nav-link hvr-grow">Care Guides</a>
+                            <a href="{% url 'all_animals_care' %}" class="nav-link hvr-grow">Skötselråd</a>
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a href="{% url 'profile' %}" class="nav-link hvr-grow">My Profile</a>
+                            <a href="{% url 'profile' %}" class="nav-link hvr-grow">Mina sidor</a>
                         </li>
                         <li class="nav-item">
                             <a href="{% url 'account_logout' %}" class="nav-link hvr-grow">Logout</a>
@@ -104,7 +108,7 @@
                             <a href="{% url 'account_login' %}" class="nav-link hvr-grow">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'account_signup' %}" class="nav-link hvr-grow">Register</a>
+                            <a href="{% url 'account_signup' %}" class="nav-link hvr-grow">Registera dig</a>
                         </li>
                         {% endif %}
                         <li class="nav-item">
@@ -171,33 +175,27 @@
     <footer class="fixed-bottom mt-4 ">
         <div class="row justify-content-center">
             <div class="col-md-4 left footer-info-divs">
-                <h4 class="underline">Find Us:</h4>
+                <h4 class="underline">Hitta Oss:</h4>
                 <p>
-                    <i class="fas fa-phone"></i> : 555 - 5555 <br>
-                    <i class="fas fa-at"></i> : contactus@gbgzoo.se <br>
-                    <i class="fas fa-search-location"></i> : 1 Street, Gothenburg 155 89 <br>
+                    <i class="fas fa-phone"></i> :  033 - 340 25 10 <br>
+                    <i class="fas fa-at"></i> : kim@zoodjur.se <br>
+                    <i class="fas fa-search-location"></i> : Gimlegatan 5, 504 30 Borås <br>
                 </p>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4 follow-us">
-                <h4 class="underline">Follow Us:</h4>
+                <h4 class="underline">Följ Oss:</h4>
                 <br>
                 <span>
                     <a class="hvr-grow" href="http://facebook.com" target="_blank"><i
                             class="fab fa-facebook-square facebook"></i></a>
-                    <a class="hvr-grow" href="http://instagram.com" target="_blank"><i
+                    <a class="hvr-grow" href="http://instagram.com/zoodjur" target="_blank"><i
                             class="fab fa-instagram hvr-grow instagram"></i></a>
-                    <a class="hvr-grow" href="http://twitter.com" target="_blank"><i
-                            class="fab fa-twitter hvr-grow twitter"></i></a>
-                    <a class="hvr-grow" href="http://youtube.com" target="_blank"><i
-                            class="fab fa-youtube hvr-grow youtube"></i></a>
                 </span>
             </div>
             <div class="col-md-4 right footer-info-divs">
-                <h4 class="underline">About Us:</h4>
+                <h4 class="underline">Om Oss</h4>
                 <p>
-                    Gothenburgs largest selection of reptiles, amphibians and petcare products.
-                    We are located in the central suburb of Munkebäck.
-                    Our physical store is open 9am - 5pm daily.
+                    Ett av Sveriges största utbud av reptiler, groddjur och husdjursvårdsprodukter. <br> Vår butik är öppen Mon - Fre 10:00 - 19:00 och Lor - Son 11:00 - 16:00.
 
                 </p>
             </div>

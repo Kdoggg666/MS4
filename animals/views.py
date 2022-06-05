@@ -75,8 +75,8 @@ def animal_details(request, animal_id):
     View for Animal Details with ratings.
     """
     avg_stars = Rating.objects.all().aggregate(Avg('rating_out_of_five'))
-    for key, value in avg_stars.items():
-        intstar = int(value)
+    # for key, value in avg_stars.items():
+    #     intstar = int(value)
 
     animal = get_object_or_404(Animal, pk=animal_id)
     try:
@@ -90,7 +90,7 @@ def animal_details(request, animal_id):
         'ratings': ratings,
         'care': care,
         'avg_stars': avg_stars,
-        'intstar': intstar,
+        # 'intstar': intstar,
 
     }
     return render(request, 'animals/animal_details.html', context)
